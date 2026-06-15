@@ -12,6 +12,7 @@
 		D973CE102FE0182300561B78 /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = D973CE0F2FE0182300561B78 /* Models */; };
 		D973CE122FE0182300561B78 /* Persistence in Frameworks */ = {isa = PBXBuildFile; productRef = D973CE112FE0182300561B78 /* Persistence */; };
 		D973CE142FE0182300561B78 /* Utilities in Frameworks */ = {isa = PBXBuildFile; productRef = D973CE132FE0182300561B78 /* Utilities */; };
+		D9A60FA12FE0202F006100F9 /* Repositories in Frameworks */ = {isa = PBXBuildFile; productRef = D9A60FA02FE0202F006100F9 /* Repositories */; };
 		D9AF6A122FE01D1A000E7F79 /* Navigation in Frameworks */ = {isa = PBXBuildFile; productRef = D9AF6A112FE01D1A000E7F79 /* Navigation */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9A60FA12FE0202F006100F9 /* Repositories in Frameworks */,
 				D9AF6A122FE01D1A000E7F79 /* Navigation in Frameworks */,
 				D973CE122FE0182300561B78 /* Persistence in Frameworks */,
 				D973CE102FE0182300561B78 /* Models in Frameworks */,
@@ -124,6 +126,7 @@
 				D973CE112FE0182300561B78 /* Persistence */,
 				D973CE132FE0182300561B78 /* Utilities */,
 				D9AF6A112FE01D1A000E7F79 /* Navigation */,
+				D9A60FA02FE0202F006100F9 /* Repositories */,
 			);
 			productName = Renta;
 			productReference = D94C19932FDFF89C006750B0 /* Renta.app */;
@@ -452,6 +455,10 @@
 		D973CE132FE0182300561B78 /* Utilities */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Utilities;
+		};
+		D9A60FA02FE0202F006100F9 /* Repositories */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Repositories;
 		};
 		D9AF6A112FE01D1A000E7F79 /* Navigation */ = {
 			isa = XCSwiftPackageProductDependency;
