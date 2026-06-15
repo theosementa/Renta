@@ -14,6 +14,8 @@
 		D973CE142FE0182300561B78 /* Utilities in Frameworks */ = {isa = PBXBuildFile; productRef = D973CE132FE0182300561B78 /* Utilities */; };
 		D9A60FA12FE0202F006100F9 /* Repositories in Frameworks */ = {isa = PBXBuildFile; productRef = D9A60FA02FE0202F006100F9 /* Repositories */; };
 		D9AF6A122FE01D1A000E7F79 /* Navigation in Frameworks */ = {isa = PBXBuildFile; productRef = D9AF6A112FE01D1A000E7F79 /* Navigation */; };
+		D9CB54692FE024A600795FCD /* DataSources in Frameworks */ = {isa = PBXBuildFile; productRef = D9CB54682FE024A600795FCD /* DataSources */; };
+		D9CB59EB2FE024CD0026ED82 /* Objects in Frameworks */ = {isa = PBXBuildFile; productRef = D9CB59EA2FE024CD0026ED82 /* Objects */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +63,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9CB59EB2FE024CD0026ED82 /* Objects in Frameworks */,
 				D9A60FA12FE0202F006100F9 /* Repositories in Frameworks */,
+				D9CB54692FE024A600795FCD /* DataSources in Frameworks */,
 				D9AF6A122FE01D1A000E7F79 /* Navigation in Frameworks */,
 				D973CE122FE0182300561B78 /* Persistence in Frameworks */,
 				D973CE102FE0182300561B78 /* Models in Frameworks */,
@@ -127,6 +131,8 @@
 				D973CE132FE0182300561B78 /* Utilities */,
 				D9AF6A112FE01D1A000E7F79 /* Navigation */,
 				D9A60FA02FE0202F006100F9 /* Repositories */,
+				D9CB54682FE024A600795FCD /* DataSources */,
+				D9CB59EA2FE024CD0026ED82 /* Objects */,
 			);
 			productName = Renta;
 			productReference = D94C19932FDFF89C006750B0 /* Renta.app */;
@@ -463,6 +469,14 @@
 		D9AF6A112FE01D1A000E7F79 /* Navigation */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Navigation;
+		};
+		D9CB54682FE024A600795FCD /* DataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DataSources;
+		};
+		D9CB59EA2FE024CD0026ED82 /* Objects */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Objects;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

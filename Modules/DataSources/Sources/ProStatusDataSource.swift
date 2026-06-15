@@ -19,9 +19,9 @@ public final class ProStatusDataSource {
         updateListenerTask = startTransactionListener()
     }
 
-    deinit {
-        updateListenerTask?.cancel()
-    }
+//    deinit {
+//        updateListenerTask?.cancel()
+//    }
 
 }
 

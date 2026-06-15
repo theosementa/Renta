@@ -5,6 +5,7 @@
 
 import Foundation
 import Repositories
+import Models
 
 @Observable @MainActor
 public final class TagDataSource {
