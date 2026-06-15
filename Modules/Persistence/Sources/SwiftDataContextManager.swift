@@ -16,12 +16,12 @@ public final class SwiftDataContextManager: ObservableObject {
 
     public nonisolated static let remoteChangeNotification = Notification.Name("SwiftDataContextManager.remoteChange")
 
-    let container: ModelContainer
+    public let container: ModelContainer
     var context: ModelContext
 
     private init() {
         do {
-            let config = ModelConfiguration(cloudKitDatabase: .automatic)
+            let config = ModelConfiguration(cloudKitDatabase: .private("iCloud.com.sementa.renta"))
             container = try ModelContainer(for: ItemEntity.self, TagEntity.self, UserSettingsEntity.self, configurations: config)
             context = container.mainContext
         } catch {
