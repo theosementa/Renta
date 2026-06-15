@@ -12,9 +12,13 @@ let package = Package(
             targets: ["DesignSystem"]
         )
     ],
+    dependencies: [
+        .package(path: "../Models")
+    ],
     targets: [
         .target(
-            name: "DesignSystem"
+            name: "DesignSystem",
+            dependencies: ["Models"]
         )
     ],
     swiftLanguageModes: [.v6]
