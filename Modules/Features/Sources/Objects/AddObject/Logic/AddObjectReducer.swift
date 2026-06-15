@@ -16,7 +16,7 @@ struct AddObjectReducer {
         case .loading:
             newState.screenState = .loading
 
-        case .submitted:
+        case .submitted(_):
             newState.screenState = .success(())
 
         case .failed(let error):
@@ -36,6 +36,7 @@ struct AddObjectReducer {
 
         case .purchaseDateChanged(let value):
             newState.purchaseDate = value
+//            newState.sh
 
         case .durationTargetChanged(let value):
             newState.durationTarget = value
@@ -52,6 +53,9 @@ struct AddObjectReducer {
 
         case .tagRemoved(let id):
             newState.selectedTags.removeAll { $0.id == id }
+
+        case .excludeFromGlobalChanged(let value):
+            newState.excludeFromGlobal = value
 
         }
 

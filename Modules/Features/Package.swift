@@ -9,12 +9,14 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../DataSources"),
-        .package(path: "../Models")
+        .package(path: "../Models"),
+        .package(path: "../DesignSystem"),
+        .package(url: "https://github.com/izyumkin/MCEmojiPicker", from: "1.0.0")
     ],
     targets: [
         .target(
             name: "Objects",
-            dependencies: ["DataSources", "Models"]
+            dependencies: ["DataSources", "Models", "DesignSystem", "MCEmojiPicker"]
         )
     ],
     swiftLanguageModes: [.v6]

@@ -22,6 +22,9 @@ public enum AddObjectIntent {
     case tagAdded(TagModelDomain)
     case tagRemoved(UUID)
     
+    // Step 4 — Confirmation
+    case excludeFromGlobalChanged(Bool)
+
     // Global actions
     case loadTags
     case submit

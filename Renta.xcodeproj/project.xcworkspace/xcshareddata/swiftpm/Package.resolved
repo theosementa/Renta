@@ -1,6 +1,15 @@
 {
-  "originHash" : "8eed834907aa43858b660db2bf8c113a2d4caaaf213b9512e0734ba397280e24",
+  "originHash" : "8a5fdf327ead94ba0a5b08bc1f0f5ae4b2dc511bb07a5c164080c8afc9cefb3b",
   "pins" : [
+    {
+      "identity" : "mcemojipicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/izyumkin/MCEmojiPicker",
+      "state" : {
+        "revision" : "e5b3ed359b04370287366a7c15ffa7013cdd4eec",
+        "version" : "1.2.5"
+      }
+    },
     {
       "identity" : "pharosnav-ios",
       "kind" : "remoteSourceControl",

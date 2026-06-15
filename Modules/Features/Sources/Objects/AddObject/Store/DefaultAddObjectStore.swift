@@ -105,9 +105,13 @@ public extension DefaultAddObjectStore {
                     purchasePrice: state.purchasePrice,
                     purchaseDate: state.purchaseDate,
                     durationTarget: state.durationTarget,
-                    tags: state.selectedTags
+                    tags: state.selectedTags,
+                    excludeFromGlobal: state.excludeFromGlobal
                 ))
             }
+
+        case .excludeFromGlobalChanged(let value):
+            state = reducer.reduce(state: state, result: .excludeFromGlobalChanged(value))
 
         case .dismiss:
             emit(.dismiss)
@@ -126,7 +130,7 @@ private extension DefaultAddObjectStore {
             let suggestions = tagDataSource.suggestions(for: state.tagQuery)
             state = reducer.reduce(state: state, result: .tagSuggestionsLoaded(suggestions))
 
-        case let .submit(name, emoji, purchasePrice, purchaseDate, durationTarget, tags):
+        case let .submit(name, emoji, purchasePrice, purchaseDate, durationTarget, tags, excludeFromGlobal):
             state = reducer.reduce(state: state, result: .loading)
             do {
                 // TODO: pass tags to itemDataSource.add once the repository supports tag associations
@@ -135,7 +139,8 @@ private extension DefaultAddObjectStore {
                     emoji: emoji,
                     purchasePrice: purchasePrice,
                     purchaseDate: purchaseDate,
-                    durationTarget: durationTarget
+                    durationTarget: durationTarget,
+                    excludeFromGlobal: excludeFromGlobal
                 )
                 state = reducer.reduce(state: state, result: .submitted(domain))
                 emit(.objectAdded(domain))

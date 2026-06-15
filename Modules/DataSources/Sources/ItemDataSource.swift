@@ -37,7 +37,8 @@ public extension ItemDataSource {
         emoji: String,
         purchasePrice: Double,
         purchaseDate: Date,
-        durationTarget: DurationTargetType
+        durationTarget: DurationTargetType,
+        excludeFromGlobal: Bool = false
     ) async throws -> ItemModelDomain {
         if !proStatusDataSource.isPro && items.count >= 10 {
             throw AppError.freeTierLimit
@@ -48,7 +49,7 @@ public extension ItemDataSource {
             purchasePrice: purchasePrice,
             purchaseDate: purchaseDate,
             durationTarget: durationTarget,
-            excludeFromGlobal: false
+            excludeFromGlobal: excludeFromGlobal
         )
         items.append(domain)
         return domain
