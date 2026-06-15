@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D94C19EC2FDFFB84006750B0 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = D94C19EB2FDFFB84006750B0 /* DesignSystem */; };
+		D973CE0E2FE0182300561B78 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = D973CE0D2FE0182300561B78 /* Core */; };
+		D973CE102FE0182300561B78 /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = D973CE0F2FE0182300561B78 /* Models */; };
+		D973CE122FE0182300561B78 /* Persistence in Frameworks */ = {isa = PBXBuildFile; productRef = D973CE112FE0182300561B78 /* Persistence */; };
+		D973CE142FE0182300561B78 /* Utilities in Frameworks */ = {isa = PBXBuildFile; productRef = D973CE132FE0182300561B78 /* Utilities */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,7 +59,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D973CE122FE0182300561B78 /* Persistence in Frameworks */,
+				D973CE102FE0182300561B78 /* Models in Frameworks */,
 				D94C19EC2FDFFB84006750B0 /* DesignSystem in Frameworks */,
+				D973CE142FE0182300561B78 /* Utilities in Frameworks */,
+				D973CE0E2FE0182300561B78 /* Core in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +117,10 @@
 			name = Renta;
 			packageProductDependencies = (
 				D94C19EB2FDFFB84006750B0 /* DesignSystem */,
+				D973CE0D2FE0182300561B78 /* Core */,
+				D973CE0F2FE0182300561B78 /* Models */,
+				D973CE112FE0182300561B78 /* Persistence */,
+				D973CE132FE0182300561B78 /* Utilities */,
 			);
 			productName = Renta;
 			productReference = D94C19932FDFF89C006750B0 /* Renta.app */;
@@ -421,6 +433,22 @@
 		D94C19EB2FDFFB84006750B0 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DesignSystem;
+		};
+		D973CE0D2FE0182300561B78 /* Core */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Core;
+		};
+		D973CE0F2FE0182300561B78 /* Models */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Models;
+		};
+		D973CE112FE0182300561B78 /* Persistence */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Persistence;
+		};
+		D973CE132FE0182300561B78 /* Utilities */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Utilities;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
