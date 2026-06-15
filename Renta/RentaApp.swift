@@ -8,12 +8,13 @@
 import SwiftUI
 import Persistence
 import SwiftData
+import Navigation
 
 @main
 struct RentaApp: App {
 
     init() {
-        // T031 — NavigationRegistry.shared.registerAllDestinations()
+        NavigationRegistry.shared.registerAllDestinations()
     }
 
     var body: some Scene {

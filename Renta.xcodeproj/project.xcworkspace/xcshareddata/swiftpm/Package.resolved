@@ -1,0 +1,24 @@
+{
+  "originHash" : "8eed834907aa43858b660db2bf8c113a2d4caaaf213b9512e0734ba397280e24",
+  "pins" : [
+    {
+      "identity" : "pharosnav-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/neopixl/PharosNav-ios.git",
+      "state" : {
+        "revision" : "823950e734276ec523864410627044b265d2242f",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "f99ae8aa18f0cf0d53481901f88a0991dc3bd4a2",
+        "version" : "601.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}
