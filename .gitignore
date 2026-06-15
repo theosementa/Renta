@@ -1,3 +1,18 @@
 .claude
 .specify
 specs/
+
+# Secrets
+*.xcconfig
+.env
+*.env.local
+settings.local.json
+
+# Build
+.build/
+DerivedData/
+*.ipa
+
+# IDE
+.DS_Store
+*.xcuserstate

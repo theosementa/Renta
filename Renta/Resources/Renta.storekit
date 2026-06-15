@@ -1,0 +1,30 @@
+{
+  "identifier": "com.renta.app",
+  "nonConsumableProducts": [
+    {
+      "displayPrice": "4.99",
+      "familySharable": false,
+      "internalID": "com.renta.app.pro",
+      "localizations": [
+        {
+          "description": "Accès illimité à tous tes objets",
+          "displayName": "Renta Pro",
+          "locale": "fr_FR"
+        },
+        {
+          "description": "Unlimited access to all your items",
+          "displayName": "Renta Pro",
+          "locale": "en_US"
+        }
+      ],
+      "productID": "com.renta.app.pro",
+      "referenceName": "Renta Pro",
+      "type": "NonConsumable"
+    }
+  ],
+  "settings": {},
+  "version": {
+    "major": 1,
+    "minor": 0
+  }
+}

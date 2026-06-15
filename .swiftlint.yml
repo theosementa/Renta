@@ -1,0 +1,17 @@
+disabled_rules:
+  - trailing_whitespace
+  - line_length
+
+opt_in_rules:
+  - force_unwrapping
+  - empty_count
+  - closure_end_indentation
+
+force_cast: warning
+force_try: error
+
+excluded:
+  - Renta.xcodeproj
+  - .build
+  - DerivedData
+  - Modules/**/Package.swift
