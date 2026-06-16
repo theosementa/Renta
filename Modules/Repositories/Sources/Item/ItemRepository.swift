@@ -16,6 +16,7 @@ public protocol ItemRepository {
         purchasePrice: Double,
         purchaseDate: Date,
         durationTarget: DurationTargetType,
+        tags: [UUID],
         excludeFromGlobal: Bool
     ) throws -> ItemModelDomain
     func update(_ domain: ItemModelDomain) throws

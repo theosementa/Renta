@@ -10,9 +10,11 @@ import Models
 public struct ObjectCardView: View {
 
     let item: ItemModelDomain
+    let onDelete: () -> Void
 
-    public init(item: ItemModelDomain) {
+    public init(item: ItemModelDomain, onDelete: @escaping () -> Void) {
         self.item = item
+        self.onDelete = onDelete
     }
 
     // MARK: - Body
@@ -26,6 +28,13 @@ public struct ObjectCardView: View {
         }
         .padding(.standard)
         .background(Color.Background.secondary, in: .rect(cornerRadius: .mediumLarge))
+        .contextMenu {
+            Button(role: .destructive) {
+                onDelete()
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+        }
     }
 }
 
@@ -44,7 +53,7 @@ private extension ObjectCardView {
                     Text(item.name)
                         .font(AppFont.Body.largeMedium, color: .Text.primary)
 
-                    Text(item.subtitleDisplay)
+                    Text(item.ownedForDisplay)
                         .font(AppFont.Label.largeMedium, color: .Text.secondary)
                 }
             }
@@ -79,13 +88,13 @@ private let previewItem = ItemModelDomain(
 )
 
 #Preview("ObjectCardView — Light") {
-    ObjectCardView(item: previewItem)
+    ObjectCardView(item: previewItem, onDelete: {})
         .padding(.standard)
         .background(Color.Background.primary)
 }
 
 #Preview("ObjectCardView — Dark") {
-    ObjectCardView(item: previewItem)
+    ObjectCardView(item: previewItem, onDelete: {})
         .padding(.standard)
         .background(Color.Background.primary)
         .preferredColorScheme(.dark)

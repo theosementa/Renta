@@ -22,12 +22,23 @@ public struct ObjectsListScreen: View {
         .navigationTitle("My Objects")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                AppNavigationButton(target: .fullScreenCover(.object(.create))) {
-                    AppCircleButtonView(systemImage: "plus", hasLiquidGlass: false)
-                        .allowsHitTesting(false)
+            if #available(iOS 26, *) {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Done", systemImage: "plus", role: .confirm) {
+                        viewModel.navigateToAddObject()
+                    }
+                    .tint(Color.Brand.main)
+                    .accessibilityLabel("Add object")
                 }
-                .accessibilityLabel("Add object")
+            } else {
+                ToolbarItem(placement: .topBarTrailing) {
+                    AppNavigationButton(target: .fullScreenCover(.object(.create))) {
+                        IconView(.iconPlus, color: .white)
+                            .padding(.small)
+                    }
+                    .background(Color.Brand.main, in: .circle)
+                    .accessibilityLabel("Add object")
+                }
             }
         }
         .background(Color.Background.primary)
@@ -58,7 +69,7 @@ private extension ObjectsListScreen {
         case .success(let items):
             LazyVStack(spacing: .standard) {
                 ForEach(items) { item in
-                    ObjectCardView(item: item)
+                    ObjectCardView(item: item, onDelete: { viewModel.deleteItem(id: item.id) })
                 }
             }
             .padding(.standard)
@@ -76,11 +87,19 @@ private extension ObjectsListScreen {
 // MARK: - ViewModel
 extension ObjectsListScreen {
 
-    @Observable @MainActor final class ViewModel {
-        private(set) var state: ScreenState<[ItemModelDomain]> = .loading
+    @Observable @MainActor
+    final class ViewModel {
+        private(set) var isInitialLoading: Bool = true
+        private(set) var loadError: AppError? = nil
         private let dataSource: ItemDataSource
 
-        init(dataSource: ItemDataSource = ItemDataSource()) {
+        var state: ScreenState<[ItemModelDomain]> {
+            if isInitialLoading { return .loading }
+            if let error = loadError { return .error(error) }
+            return dataSource.items.isEmpty ? .empty : .success(dataSource.items)
+        }
+
+        init(dataSource: ItemDataSource = ItemDataSource.shared) {
             self.dataSource = dataSource
         }
     }
@@ -88,16 +107,30 @@ extension ObjectsListScreen {
 }
 
 // MARK: - Public methods
-extension ObjectsListScreen.ViewModel {
+extension ObjectsListScreen.ViewModel: Routable {
+
+    func navigateToAddObject() {
+        router?.present(route: .fullScreenCover, .object(.create))
+    }
+
+    func deleteItem(id: UUID) {
+        Task {
+            try? await dataSource.delete(id: id)
+        }
+    }
 
     func loadItems() async {
-        state = .loading
+        isInitialLoading = true
+        loadError = nil
         do {
             try await dataSource.fetchItems()
-            let items = dataSource.items
-            state = items.isEmpty ? .empty : .success(items)
+            isInitialLoading = false
+        } catch let error as AppError {
+            loadError = error
+            isInitialLoading = false
         } catch {
-            state = .error(.unknown(error.localizedDescription))
+            loadError = .unknown(error.localizedDescription)
+            isInitialLoading = false
         }
     }
 

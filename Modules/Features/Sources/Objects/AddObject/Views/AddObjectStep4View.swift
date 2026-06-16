@@ -82,7 +82,7 @@ private extension AddObjectStep4View {
     @ViewBuilder
     var costPreviewCard: some View {
         if store.state.hasCostPreview {
-            HStack(spacing: .standard) {
+            HStack(spacing: .large) {
                 if store.state.showCostPerDay {
                     costColumn(value: store.state.costPerDay.asCurrency, label: "per day")
                 }

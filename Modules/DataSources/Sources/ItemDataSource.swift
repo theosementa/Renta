@@ -10,6 +10,8 @@ import Models
 @Observable @MainActor
 public final class ItemDataSource {
 
+    public static let shared = ItemDataSource()
+
     public private(set) var items: [ItemModelDomain] = []
 
     private let repository: ItemRepository
@@ -38,6 +40,7 @@ public extension ItemDataSource {
         purchasePrice: Double,
         purchaseDate: Date,
         durationTarget: DurationTargetType,
+        tags: [TagModelDomain] = [],
         excludeFromGlobal: Bool = false
     ) async throws -> ItemModelDomain {
         if !proStatusDataSource.isPro && items.count >= 10 {
@@ -49,6 +52,7 @@ public extension ItemDataSource {
             purchasePrice: purchasePrice,
             purchaseDate: purchaseDate,
             durationTarget: durationTarget,
+            tags: tags.map(\.id),
             excludeFromGlobal: excludeFromGlobal
         )
         items.append(domain)

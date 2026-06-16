@@ -20,15 +20,15 @@ public struct ProfitabilityIndicatorView: View {
     public var body: some View {
         ZStack {
             Circle()
-                .stroke(Color.Background.secondary, lineWidth: 3)
+                .stroke(scoreBand.color.opacity(0.15), lineWidth: 4)
 
             Circle()
                 .trim(from: 0, to: CGFloat(scoreValue) / 100.0)
-                .stroke(scoreBand.color, style: StrokeStyle(lineWidth: 3, lineCap: .round))
+                .stroke(scoreBand.color, style: StrokeStyle(lineWidth: 4, lineCap: .round))
                 .rotationEffect(.degrees(-90))
 
             Text("\(scoreValue)")
-                .font(AppFont.Label.mediumMedium, color: scoreBand.color)
+                .font(AppFont.custom(name: .fontSemiBold, size: 14), color: scoreBand.color)
         }
         .frame(width: 36, height: 36)
     }

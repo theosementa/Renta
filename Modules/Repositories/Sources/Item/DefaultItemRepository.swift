@@ -38,14 +38,25 @@ public extension DefaultItemRepository {
         purchasePrice: Double,
         purchaseDate: Date,
         durationTarget: DurationTargetType,
+        tags: [UUID],
         excludeFromGlobal: Bool
     ) throws -> ItemModelDomain {
+        var tagEntities: [TagEntity] = []
+        for tagID in tags {
+            let descriptor = FetchDescriptor<TagEntity>(
+                predicate: #Predicate { $0.id == tagID }
+            )
+            if let entity = try context.fetch(descriptor).first {
+                tagEntities.append(entity)
+            }
+        }
         let entity = ItemEntity(
             name: name,
             emoji: emoji,
             purchasePrice: purchasePrice,
             purchaseDate: purchaseDate,
             durationTarget: durationTarget,
+            tags: tagEntities,
             excludeFromGlobal: excludeFromGlobal
         )
         context.insert(entity)

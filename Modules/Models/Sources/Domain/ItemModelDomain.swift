@@ -89,11 +89,6 @@ extension ItemModelDomain {
         return days <= 1 ? "Today" : "\(days) days"
     }
 
-    public var subtitleDisplay: String {
-        guard let firstTag = tags.first else { return ownedForDisplay }
-        return "\(firstTag.name) • \(ownedForDisplay)"
-    }
-
     public var hintText: String {
         if scoreValue >= 100 { return "Fully amortized 🎉" }
         switch scoreBand {

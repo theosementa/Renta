@@ -25,7 +25,7 @@ public final class DefaultAddObjectStore: @MainActor AddObjectStore {
 
     public init() {
         self.state = .init()
-        self.itemDataSource = ItemDataSource()
+        self.itemDataSource = ItemDataSource.shared
         self.tagDataSource = TagDataSource()
     }
 
@@ -86,9 +86,13 @@ public extension DefaultAddObjectStore {
 
         case .tagAdded(let tag):
             state = reducer.reduce(state: state, result: .tagAdded(tag))
+            loadTagsTask?.cancel()
+            loadTagsTask = Task { await execute(.loadTags) }
 
         case .tagRemoved(let id):
             state = reducer.reduce(state: state, result: .tagRemoved(id))
+            loadTagsTask?.cancel()
+            loadTagsTask = Task { await execute(.loadTags) }
 
         case .tagDeleted(let id):
             deleteTagTask?.cancel()
@@ -133,7 +137,17 @@ private extension DefaultAddObjectStore {
         switch action {
 
         case .loadTags:
+            if tagDataSource.tags.isEmpty {
+                do {
+                    try await tagDataSource.fetchTags()
+                } catch {
+                    state = reducer.reduce(state: state, result: .failed(.unknown(error.localizedDescription)))
+                    return
+                }
+            }
+            let selectedIds = Set(state.selectedTags.map(\.id))
             let suggestions = tagDataSource.suggestions(for: state.tagQuery)
+                .filter { !selectedIds.contains($0.id) }
             state = reducer.reduce(state: state, result: .tagSuggestionsLoaded(suggestions))
 
         case .createTag(let name):
@@ -155,13 +169,13 @@ private extension DefaultAddObjectStore {
         case let .submit(name, emoji, purchasePrice, purchaseDate, durationTarget, tags):
             state = reducer.reduce(state: state, result: .loading)
             do {
-                // TODO: pass tags to itemDataSource.add once the repository supports tag associations
                 let domain = try await itemDataSource.add(
                     name: name,
                     emoji: emoji,
                     purchasePrice: purchasePrice,
                     purchaseDate: purchaseDate,
-                    durationTarget: durationTarget
+                    durationTarget: durationTarget,
+                    tags: tags
                 )
                 state = reducer.reduce(state: state, result: .submitted(domain))
                 emit(.objectAdded(domain))

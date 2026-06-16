@@ -34,6 +34,7 @@ public extension MockItemRepository {
         purchasePrice: Double,
         purchaseDate: Date,
         durationTarget: DurationTargetType,
+        tags: [UUID],
         excludeFromGlobal: Bool
     ) throws -> ItemModelDomain {
         let domain = ItemModelDomain(

@@ -15,6 +15,13 @@ public struct AppFont {
     let relativeTo: Font.TextStyle
 }
 
+public enum AppFontWeight: String {
+    case fontRegular = "Outfit-Regular"
+    case fontMedium = "Outfit-Medium"
+    case fontSemiBold = "Outfit-SemiBold"
+    case fontBold = "Outfit-Bold"
+}
+
 public let fontRegular: String = "Outfit-Regular"
 public let fontMedium: String = "Outfit-Medium"
 public let fontSemiBold: String = "Outfit-SemiBold"
@@ -22,8 +29,8 @@ public let fontBold: String = "Outfit-Bold"
 
 public extension AppFont {
 
-    static func custom(name: String, size: CGFloat, relativeTo: Font.TextStyle = .body) -> AppFont {
-        return AppFont(name: name, size: size, relativeTo: relativeTo)
+    static func custom(name: AppFontWeight, size: CGFloat, relativeTo: Font.TextStyle = .body) -> AppFont {
+        return AppFont(name: name.rawValue, size: size, relativeTo: relativeTo)
     }
 
     struct Display {

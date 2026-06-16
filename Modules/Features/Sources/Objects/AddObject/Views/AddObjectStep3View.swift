@@ -115,6 +115,7 @@ private extension AddObjectStep3View {
                 .font(AppFont.Body.mediumRegular, color: .Text.primary)
                 .fullWidth(.leading)
                 .padding(.standard)
+                .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
         .contextMenu {
