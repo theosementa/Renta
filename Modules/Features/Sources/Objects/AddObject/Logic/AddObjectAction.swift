@@ -8,6 +8,8 @@ import Models
 
 enum AddObjectAction {
     case loadTags
+    case createTag(String)
+    case deleteTag(UUID)
     case submit(
         name: String,
         emoji: String,

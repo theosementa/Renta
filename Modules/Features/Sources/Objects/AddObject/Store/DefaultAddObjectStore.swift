@@ -20,6 +20,8 @@ public final class DefaultAddObjectStore: @MainActor AddObjectStore {
 
     private var submitTask: Task<Void, Never>?
     private var loadTagsTask: Task<Void, Never>?
+    private var createTagTask: Task<Void, Never>?
+    private var deleteTagTask: Task<Void, Never>?
 
     public init() {
         self.state = .init()
@@ -78,11 +80,19 @@ public extension DefaultAddObjectStore {
             loadTagsTask?.cancel()
             loadTagsTask = Task { await execute(.loadTags) }
 
+        case .tagCreated(let name):
+            createTagTask?.cancel()
+            createTagTask = Task { await execute(.createTag(name)) }
+
         case .tagAdded(let tag):
             state = reducer.reduce(state: state, result: .tagAdded(tag))
 
         case .tagRemoved(let id):
             state = reducer.reduce(state: state, result: .tagRemoved(id))
+
+        case .tagDeleted(let id):
+            deleteTagTask?.cancel()
+            deleteTagTask = Task { await execute(.deleteTag(id)) }
 
         case .loadTags:
             loadTagsTask?.cancel()
@@ -129,6 +139,22 @@ private extension DefaultAddObjectStore {
         case .loadTags:
             let suggestions = tagDataSource.suggestions(for: state.tagQuery)
             state = reducer.reduce(state: state, result: .tagSuggestionsLoaded(suggestions))
+
+        case .createTag(let name):
+            do {
+                let tag = try await tagDataSource.add(name: name)
+                state = reducer.reduce(state: state, result: .tagAdded(tag))
+            } catch {
+                state = reducer.reduce(state: state, result: .failed(.unknown(error.localizedDescription)))
+            }
+
+        case .deleteTag(let id):
+            do {
+                try await tagDataSource.delete(id: id)
+                state = reducer.reduce(state: state, result: .tagDeleted(id))
+            } catch {
+                state = reducer.reduce(state: state, result: .failed(.unknown(error.localizedDescription)))
+            }
 
         case let .submit(name, emoji, purchasePrice, purchaseDate, durationTarget, tags, excludeFromGlobal):
             state = reducer.reduce(state: state, result: .loading)

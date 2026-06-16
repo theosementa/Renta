@@ -19,8 +19,10 @@ public enum AddObjectIntent {
     case durationTargetChanged(DurationTargetType)
     // Step 3 — Tags
     case tagQueryChanged(String)
+    case tagCreated(String)
     case tagAdded(TagModelDomain)
     case tagRemoved(UUID)
+    case tagDeleted(UUID)
     
     // Step 4 — Confirmation
     case excludeFromGlobalChanged(Bool)

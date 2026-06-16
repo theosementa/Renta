@@ -11,30 +11,25 @@ struct AddObjectStep3View: View {
 
     @Bindable var store: DefaultAddObjectStore
 
+    @State private var showCreateTag = false
+
     // MARK: - Body
     var body: some View {
-        VStack(alignment: .leading, spacing: .standard) {
+        VStack(alignment: .leading, spacing: .large) {
             searchBar
 
             if !store.state.selectedTags.isEmpty {
-                VStack(alignment: .leading, spacing: .small) {
-                    Text("Selected")
-                        .font(Font.custom(fontRegular, size: 14))
-                        .foregroundStyle(Color.Text.secondary)
-                    selectedTagsChips
-                }
+                selectedSection
             }
 
-            if !store.state.tagSuggestions.isEmpty {
-                VStack(spacing: 0) {
-                    ForEach(store.state.tagSuggestions) { tag in
-                        tagSuggestionRow(tag)
-                    }
-                }
-                .background(Color.Background.secondary, in: .rect(cornerRadius: 12))
-            }
+            tagListCard
         }
         .onAppear { store.send(.loadTags) }
+        .sheet(isPresented: $showCreateTag) {
+            CreateTagScreen { tagName in
+                store.send(.tagCreated(tagName))
+            }
+        }
     }
 }
 
@@ -42,60 +37,91 @@ struct AddObjectStep3View: View {
 private extension AddObjectStep3View {
 
     var searchBar: some View {
-        HStack(spacing: .small) {
-            Image(systemName: "magnifyingglass")
-                .foregroundStyle(Color.Text.secondary)
-            TextField("Search", text: .init(
+        AppSearchBarView(
+            placeholder: "Search",
+            text: .init(
                 get: { store.state.tagQuery },
                 set: { store.send(.tagQueryChanged($0)) }
-            ))
-            .font(Font.custom(fontRegular, size: 16))
-        }
-        .padding(.standard)
-        .frame(maxWidth: .infinity, minHeight: 52)
-        .background(Color.Background.secondary, in: .rect(cornerRadius: 12))
+            )
+        )
     }
 
-    var selectedTagsChips: some View {
-        FlowLayout(spacing: .small) {
-            ForEach(store.state.selectedTags) { tag in
-                HStack(spacing: .tiny) {
-                    Text(tag.name)
-                        .font(Font.custom(fontMedium, size: 16))
-                        .foregroundStyle(Color.Text.primary)
-                    Button {
-                        store.send(.tagRemoved(tag.id))
-                    } label: {
-                        Image(systemName: "xmark")
-                            .font(.system(size: 12, weight: .medium))
-                            .foregroundStyle(Color.Text.secondary)
-                    }
-                    .accessibilityLabel("Remove \(tag.name)")
+    var selectedSection: some View {
+        VStack(alignment: .leading, spacing: .small) {
+            Text("Selected")
+                .font(AppFont.Body.smallRegular, color: .Text.secondary)
+            FlowLayout(spacing: .medium) {
+                ForEach(store.state.selectedTags) { tag in
+                    tagChip(tag)
                 }
-                .padding(.vertical, .small)
-                .padding(.horizontal, .medium)
-                .background(Color.Background.secondary, in: .capsule)
             }
         }
+    }
+
+    func tagChip(_ tag: TagModelDomain) -> some View {
+        HStack(spacing: .tiny) {
+            Text(tag.name)
+                .font(AppFont.Body.mediumMedium, color: .Brand.main)
+            Button {
+                store.send(.tagRemoved(tag.id))
+            } label: {
+                IconView(.iconXmark, size: 16, color: .Brand.main)
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Remove \(tag.name)")
+        }
+        .padding(.horizontal, .medium)
+        .padding(.vertical, .small)
+        .background(Color.Brand.main.opacity(0.15), in: .capsule)
+    }
+
+    var tagListCard: some View {
+        VStack(spacing: 0) {
+            createNewTagRow
+            if !store.state.tagSuggestions.isEmpty {
+                Divider()
+            }
+            ForEach(Array(store.state.tagSuggestions.enumerated()), id: \.element.id) { index, tag in
+                tagSuggestionRow(tag)
+                if index < store.state.tagSuggestions.count - 1 {
+                    Divider()
+                }
+            }
+        }
+        .background(Color.Background.secondary, in: .rect(cornerRadius: .large))
+    }
+
+    var createNewTagRow: some View {
+        Button {
+            showCreateTag = true
+        } label: {
+            HStack(spacing: .small) {
+                IconView(.iconPlus, size: .large, color: .Brand.main)
+                Text("Create new tag")
+                    .font(AppFont.Body.mediumMedium, color: .Brand.main)
+            }
+            .fullWidth(.leading)
+            .padding(.standard)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Create new tag")
     }
 
     func tagSuggestionRow(_ tag: TagModelDomain) -> some View {
-        let isLast = store.state.tagSuggestions.last?.id == tag.id
-        return VStack(spacing: 0) {
-            Button {
-                store.send(.tagAdded(tag))
+        Button {
+            store.send(.tagAdded(tag))
+        } label: {
+            Text(tag.name)
+                .font(AppFont.Body.mediumRegular, color: .Text.primary)
+                .fullWidth(.leading)
+                .padding(.standard)
+        }
+        .buttonStyle(.plain)
+        .contextMenu {
+            Button(role: .destructive) {
+                store.send(.tagDeleted(tag.id))
             } label: {
-                Text(tag.name)
-                    .font(Font.custom(fontRegular, size: 16))
-                    .foregroundStyle(Color.Text.primary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.standard)
-                    .frame(minHeight: 52)
-            }
-            .buttonStyle(.plain)
-            if !isLast {
-                Divider()
-                    .padding(.leading, .standard)
+                Label("Delete", systemImage: "trash")
             }
         }
     }

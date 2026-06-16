@@ -20,5 +20,6 @@ enum AddObjectResult {
     case tagSuggestionsLoaded([TagModelDomain])
     case tagAdded(TagModelDomain)
     case tagRemoved(UUID)
+    case tagDeleted(UUID)
     case excludeFromGlobalChanged(Bool)
 }

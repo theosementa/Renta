@@ -36,7 +36,6 @@ struct AddObjectReducer {
 
         case .purchaseDateChanged(let value):
             newState.purchaseDate = value
-//            newState.sh
 
         case .durationTargetChanged(let value):
             newState.durationTarget = value
@@ -52,6 +51,10 @@ struct AddObjectReducer {
             newState.selectedTags.append(tag)
 
         case .tagRemoved(let id):
+            newState.selectedTags.removeAll { $0.id == id }
+
+        case .tagDeleted(let id):
+            newState.tagSuggestions.removeAll { $0.id == id }
             newState.selectedTags.removeAll { $0.id == id }
 
         case .excludeFromGlobalChanged(let value):
