@@ -50,7 +50,7 @@ public struct AppTextFieldView: View {
                             .background(Color.Background.secondary, in: .rect(cornerRadius: .standard))
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel("Change emoji")
+                    .accessibilityLabel("accessibility.changeEmoji".localized)
                 }
 
                 HStack(spacing: .medium) {

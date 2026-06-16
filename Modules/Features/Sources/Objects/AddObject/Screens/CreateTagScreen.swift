@@ -22,25 +22,25 @@ struct CreateTagScreen: View {
         NavigationStack {
             VStack(spacing: 0) {
                 AppTextFieldView(
-                    label: "Tag name",
-                    placeholder: "Personal, Work, Gift…",
+                    label: "tags.create.nameLabel".localized,
+                    placeholder: "tags.placeholder".localized,
                     text: $tagName
                 )
                 .padding(.large)
                 Spacer()
             }
             .background(Color.Background.primary)
-            .navigationTitle("Create tag")
+            .navigationTitle("tags.create".localized)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Cancel", role: .cancel) {
+                    Button("common.cancel".localized, role: .cancel) {
                         dismiss()
                     }
                     .font(AppFont.Body.mediumMedium, color: .Text.primary)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Save") {
+                    Button("common.save".localized) {
                         onConfirm(tagName.trimmingCharacters(in: .whitespaces))
                         dismiss()
                     }

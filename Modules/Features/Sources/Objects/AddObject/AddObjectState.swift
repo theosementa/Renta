@@ -55,30 +55,6 @@ public extension AddObjectState {
         max(1, Calendar.current.dateComponents([.day], from: purchaseDate, to: .now).day ?? 1)
     }
 
-    var ownedForDisplay: String {
-        let components = Calendar.current.dateComponents([.year, .month, .day], from: purchaseDate, to: .now)
-        let years = components.year ?? 0
-        let months = components.month ?? 0
-        let days = components.day ?? 0
-        if years > 0 {
-            let yearStr = years == 1 ? "1 year" : "\(years) years"
-            if months > 0 {
-                let monthStr = months == 1 ? "1 month" : "\(months) months"
-                return "\(yearStr) and \(monthStr)"
-            }
-            return yearStr
-        }
-        if months > 0 {
-            let monthStr = months == 1 ? "1 month" : "\(months) months"
-            if days > 0 {
-                let dayStr = days == 1 ? "1 day" : "\(days) days"
-                return "\(monthStr) and \(dayStr)"
-            }
-            return monthStr
-        }
-        return days <= 1 ? "Today" : "\(days) days"
-    }
-
     var costPerDay: Double { purchasePrice / Double(daysSinceOwned) }
     var costPerMonth: Double { costPerDay * 30.44 }
     var costPerYear: Double { costPerDay * 365.25 }

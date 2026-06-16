@@ -19,13 +19,13 @@ struct AddObjectNavigationBarView: View {
             HStack {
                 if step != .nameEmoji {
                     AppCircleButtonView(systemImage: "arrow.left", action: onLeadingTap)
-                        .accessibilityLabel("Back")
+                        .accessibilityLabel("common.back".localized)
                 } else {
                     Spacer().frame(width: 44)
                 }
                 Spacer()
                 AppCircleButtonView(systemImage: "xmark", action: onDismiss)
-                    .accessibilityLabel("Close")
+                    .accessibilityLabel("common.close".localized)
             }
             AppProgressBarView(
                 totalSteps: AddObjectStep.allCases.count,

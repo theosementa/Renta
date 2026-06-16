@@ -46,7 +46,7 @@ private extension AddObjectStep4View {
                 .background(store.state.scoreBand.color.opacity(0.15), in: .rect(cornerRadius: .small))
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(store.state.name.isEmpty ? String(localized: "No name", bundle: .module) : store.state.name)
+                Text(store.state.name.isEmpty ? "common.noName".localized : store.state.name)
                     .font(AppFont.Body.largeMedium, color: .Text.primary)
 
                 if !store.state.tagsDisplay.isEmpty {
@@ -61,11 +61,11 @@ private extension AddObjectStep4View {
 
     var detailRows: some View {
         VStack(spacing: .standard) {
-            detailRow(label: String(localized: "Purchase price", bundle: .module), value: store.state.purchasePrice.asCurrency)
+            detailRow(label: "addObject.purchasePrice".localized, value: store.state.purchasePrice.asCurrency)
             Divider()
-            detailRow(label: String(localized: "Purchase date", bundle: .module), value: store.state.purchaseDate.formatted(date: .abbreviated, time: .omitted))
+            detailRow(label: "addObject.purchaseDate".localized, value: store.state.purchaseDate.formatted(date: .abbreviated, time: .omitted))
             Divider()
-            detailRow(label: String(localized: "Owned for", bundle: .module), value: store.state.ownedForDisplay)
+            detailRow(label: "addObject.ownedFor".localized, value: ownedForDisplay)
         }
     }
 
@@ -84,13 +84,13 @@ private extension AddObjectStep4View {
         if store.state.hasCostPreview {
             HStack(spacing: .large) {
                 if store.state.showCostPerDay {
-                    costColumn(value: store.state.costPerDay.asCurrency, label: String(localized: "per day", bundle: .module))
+                    costColumn(value: store.state.costPerDay.asCurrency, label: "common.perDay".localized)
                 }
                 if store.state.showCostPerMonth {
-                    costColumn(value: store.state.costPerMonth.asCurrency, label: String(localized: "per month", bundle: .module))
+                    costColumn(value: store.state.costPerMonth.asCurrency, label: "common.perMonth".localized)
                 }
                 if store.state.showCostPerYear {
-                    costColumn(value: store.state.costPerYear.asCurrency, label: String(localized: "per year", bundle: .module))
+                    costColumn(value: store.state.costPerYear.asCurrency, label: "common.perYear".localized)
                 }
                 Spacer()
             }
@@ -106,5 +106,29 @@ private extension AddObjectStep4View {
             Text(label)
                 .font(AppFont.Label.largeMedium, color: store.state.scoreBand.color)
         }
+    }
+
+    private var ownedForDisplay: String {
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: store.state.purchaseDate, to: .now)
+        let years = components.year ?? 0
+        let months = components.month ?? 0
+        let days = components.day ?? 0
+        if years > 0 {
+            let yearStr = years == 1 ? "item.owned.oneYear".localized : String(format: "item.owned.years".localized, years)
+            if months > 0 {
+                let monthStr = months == 1 ? "item.owned.oneMonth".localized : String(format: "item.owned.months".localized, months)
+                return String(format: "item.owned.combined".localized, yearStr, monthStr)
+            }
+            return yearStr
+        }
+        if months > 0 {
+            let monthStr = months == 1 ? "item.owned.oneMonth".localized : String(format: "item.owned.months".localized, months)
+            if days > 0 {
+                let dayStr = days == 1 ? "item.owned.oneDay".localized : String(format: "item.owned.days".localized, days)
+                return String(format: "item.owned.combined".localized, monthStr, dayStr)
+            }
+            return monthStr
+        }
+        return days <= 1 ? "item.owned.today".localized : String(format: "item.owned.days".localized, days)
     }
 }

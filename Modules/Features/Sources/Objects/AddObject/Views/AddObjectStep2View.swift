@@ -77,23 +77,23 @@ private extension AddObjectStep2View {
 private extension DurationTargetType {
     var title: String {
         switch self {
-        case .lessThan6Months:  return String(localized: "Less than 6 months", bundle: .module)
-        case .sixMonthsTo1Year: return String(localized: "6 months to 1 year", bundle: .module)
-        case .oneToThreeYears:  return String(localized: "1 to 3 years", bundle: .module)
-        case .threeToFiveYears: return String(localized: "3 to 5 years", bundle: .module)
-        case .fiveToSevenYears: return String(localized: "5 to 7 years", bundle: .module)
-        case .sevenYearsOrMore: return String(localized: "7 years or more", bundle: .module)
+        case .lessThan6Months:  return "duration.lessThan6Months".localized
+        case .sixMonthsTo1Year: return "duration.sixMonthsTo1Year".localized
+        case .oneToThreeYears:  return "duration.oneToThreeYears".localized
+        case .threeToFiveYears: return "duration.threeToFiveYears".localized
+        case .fiveToSevenYears: return "duration.fiveToSevenYears".localized
+        case .sevenYearsOrMore: return "duration.sevenYearsOrMore".localized
         }
     }
 
     var subtitle: String {
         switch self {
-        case .lessThan6Months:  return String(localized: "Seasonal items, accessories — ex. sunglasses, gardening tools", bundle: .module)
-        case .sixMonthsTo1Year: return String(localized: "Everyday items with regular use — ex. shoes, small appliances", bundle: .module)
-        case .oneToThreeYears:  return String(localized: "Standard durable goods — ex. laptop, camera, bike", bundle: .module)
-        case .threeToFiveYears: return String(localized: "Quality equipment built to last — ex. high-end audio, e-bike", bundle: .module)
-        case .fiveToSevenYears: return String(localized: "Long-term investment — ex. furniture, professional tools", bundle: .module)
-        case .sevenYearsOrMore: return String(localized: "Very long lifespan — ex. vehicle, real estate equipment", bundle: .module)
+        case .lessThan6Months:  return "duration.lessThan6Months.subtitle".localized
+        case .sixMonthsTo1Year: return "duration.sixMonthsTo1Year.subtitle".localized
+        case .oneToThreeYears:  return "duration.oneToThreeYears.subtitle".localized
+        case .threeToFiveYears: return "duration.threeToFiveYears.subtitle".localized
+        case .fiveToSevenYears: return "duration.fiveToSevenYears.subtitle".localized
+        case .sevenYearsOrMore: return "duration.sevenYearsOrMore.subtitle".localized
         }
     }
 }

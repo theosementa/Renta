@@ -32,7 +32,7 @@ public struct ObjectCardView: View {
             Button(role: .destructive) {
                 onDelete()
             } label: {
-                Label("Delete", systemImage: "trash")
+                Label("common.delete".localized, systemImage: "trash")
             }
         }
     }
@@ -69,7 +69,7 @@ private extension ObjectCardView {
             Text(item.costPerDay.asCurrency)
                 .font(AppFont.Display.smallSemiBold, color: item.scoreBand.color)
 
-            Text("/day")
+            Text("objects.list.perDay".localized)
                 .font(AppFont.Label.largeMedium, color: .Text.secondary)
                 .padding(.bottom, 3)
         }

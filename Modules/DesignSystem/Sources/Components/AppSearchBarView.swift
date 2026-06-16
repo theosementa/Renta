@@ -31,12 +31,12 @@ public struct AppSearchBarView: View {
                     IconView(.iconXmark, size: .medium, color: .Text.secondary)
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("Clear search")
+                .accessibilityLabel("accessibility.clearSearch".localized)
             }
         }
         .padding(.standard)
         .background(Color.Background.secondary, in: .rect(cornerRadius: .standard))
-        .accessibilityLabel("Search field")
+        .accessibilityLabel("accessibility.searchField".localized)
     }
 }
 

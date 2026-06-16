@@ -16,7 +16,7 @@ struct AddObjectStep1View: View {
     var body: some View {
         VStack(spacing: .mediumLarge) {
             AppTextFieldView(
-                label: "Name and emoji",
+                label: "addObject.step1.nameLabel".localized,
                 leadingEmoji: store.state.emoji,
                 placeholder: "MacBook Pro M1 Max",
                 text: .init(
@@ -34,7 +34,7 @@ struct AddObjectStep1View: View {
             )
 
             AppTextFieldView(
-                label: "Purchase price",
+                label: "addObject.purchasePrice".localized,
                 placeholder: "0",
                 suffix: "€",
                 text: .init(
@@ -48,7 +48,7 @@ struct AddObjectStep1View: View {
             .keyboardType(.decimalPad)
 
             AppDateFieldView(
-                label: "Purchase date",
+                label: "addObject.purchaseDate".localized,
                 infoMessage: purchaseDateInfoMessage,
                 date: .init(
                     get: { store.state.purchaseDate },
@@ -65,10 +65,10 @@ private extension AddObjectStep1View {
     var purchaseDateInfoMessage: String {
         let days = Calendar.current.dateComponents([.day], from: store.state.purchaseDate, to: .now).day ?? 0
         if days < 365 {
-            return "\(days) days ago"
+            return String(format: "addObject.step1.daysAgo".localized, days)
         } else {
             let years = days / 365
-            return "\(years) years ago • \(days) days"
+            return String(format: "addObject.step1.yearsAgo".localized, years, days)
         }
     }
 

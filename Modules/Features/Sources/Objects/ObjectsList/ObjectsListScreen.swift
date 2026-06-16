@@ -20,7 +20,7 @@ public struct ObjectsListScreen: View {
             content
         }
         .scrollIndicators(.hidden)
-        .navigationTitle("My Objects")
+        .navigationTitle("objects.list.title".localized)
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             if #available(iOS 26, *) {
@@ -29,7 +29,7 @@ public struct ObjectsListScreen: View {
                         viewModel.navigateToAddObject()
                     }
                     .tint(brandColor.color)
-                    .accessibilityLabel("Add object")
+                    .accessibilityLabel("objects.list.addButton".localized)
                 }
             } else {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -38,7 +38,7 @@ public struct ObjectsListScreen: View {
                             .padding(.small)
                     }
                     .background(brandColor.color, in: .circle)
-                    .accessibilityLabel("Add object")
+                    .accessibilityLabel("objects.list.addButton".localized)
                 }
             }
         }
@@ -62,7 +62,7 @@ private extension ObjectsListScreen {
                 .padding(.top, .huge)
 
         case .empty:
-            Text("No objects yet")
+            Text("objects.list.empty".localized)
                 .font(AppFont.Body.mediumMedium, color: .Text.secondary)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, .huge)
@@ -76,7 +76,7 @@ private extension ObjectsListScreen {
             .padding(.standard)
 
         case .error:
-            Text("An error occurred")
+            Text("common.error".localized)
                 .font(AppFont.Body.mediumMedium, color: .Text.secondary)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, .huge)

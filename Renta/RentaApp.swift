@@ -46,19 +46,19 @@ struct ContentView: View {
             switch flow {
             case .home:
                 NavigationTabItem {
-                    Label("Objects", systemImage: "bag")
+                    Label("tab.objects".localized, systemImage: "bag")
                 } content: {
                     ObjectsListScreen()
                 }
             case .dashboard:
                 NavigationTabItem {
-                    Label("Dashboard", systemImage: "chart.bar")
+                    Label("tab.dashboard".localized, systemImage: "chart.bar")
                 } content: {
                     EmptyView()
                 }
             case .settings:
                 NavigationTabItem {
-                    Label("Settings", systemImage: "gear")
+                    Label("tab.settings".localized, systemImage: "gear")
                 } content: {
                     SettingsScreen()
                 }

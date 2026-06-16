@@ -18,8 +18,7 @@ let package = Package(
     targets: [
         .target(
             name: "DesignSystem",
-            dependencies: ["Models"],
-            resources: [.process("Sources/DesignSystem/Resources")]
+            dependencies: ["Models"]
         )
     ],
     swiftLanguageModes: [.v6]

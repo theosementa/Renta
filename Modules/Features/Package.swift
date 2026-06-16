@@ -24,8 +24,7 @@ let package = Package(
                 "DesignSystem",
                 "Navigation",
                 "MCEmojiPicker"
-            ],
-            resources: [.process("Sources/Objects/Resources")]
+            ]
         ),
         .target(
             name: "Settings",
@@ -34,8 +33,7 @@ let package = Package(
                 "Models",
                 "DesignSystem",
                 "Navigation"
-            ],
-            resources: [.process("Sources/Settings/Resources")]
+            ]
         )
     ],
     swiftLanguageModes: [.v6]

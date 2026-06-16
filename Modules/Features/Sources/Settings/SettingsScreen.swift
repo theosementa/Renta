@@ -17,14 +17,14 @@ public struct SettingsScreen: View {
     // MARK: - Body
     public var body: some View {
         Form {
-            Section(LocalizedStringKey("Appearance")) {
-                Picker(LocalizedStringKey("Brand Color"), selection: .init(
+            Section("settings.appearance".localized) {
+                Picker("settings.brandColor".localized, selection: .init(
                     get: { viewModel.brandColor },
                     set: { viewModel.updateBrandColor($0) }
                 )) {
                     ForEach(BrandColorType.allCases, id: \.self) { color in
                         Label {
-                            Text(LocalizedStringKey(color.displayName))
+                            Text(color.localizedName)
                         } icon: {
                             Circle()
                                 .fill(color.color)
@@ -35,7 +35,7 @@ public struct SettingsScreen: View {
                 }
             }
         }
-        .navigationTitle(LocalizedStringKey("Settings"))
+        .navigationTitle("settings.title".localized)
         .navigationBarTitleDisplayMode(.large)
     }
 

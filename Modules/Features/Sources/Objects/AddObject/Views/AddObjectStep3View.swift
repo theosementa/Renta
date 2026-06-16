@@ -39,7 +39,7 @@ private extension AddObjectStep3View {
 
     var searchBar: some View {
         AppSearchBarView(
-            placeholder: "Search",
+            placeholder: "common.search".localized,
             text: .init(
                 get: { store.state.tagQuery },
                 set: { store.send(.tagQueryChanged($0)) }
@@ -49,7 +49,7 @@ private extension AddObjectStep3View {
 
     var selectedSection: some View {
         VStack(alignment: .leading, spacing: .small) {
-            Text("Selected")
+            Text("tags.selected".localized)
                 .font(AppFont.Body.smallRegular, color: .Text.secondary)
             FlowLayout(spacing: .medium) {
                 ForEach(store.state.selectedTags) { tag in
@@ -69,7 +69,7 @@ private extension AddObjectStep3View {
                 IconView(.iconXmark, size: 16, color: brandColor.color)
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Remove \(tag.name)")
+            .accessibilityLabel(String(format: "tags.remove".localized, tag.name))
         }
         .padding(.horizontal, .medium)
         .padding(.vertical, .small)
@@ -98,14 +98,14 @@ private extension AddObjectStep3View {
         } label: {
             HStack(spacing: .small) {
                 IconView(.iconPlus, size: .large, color: brandColor.color)
-                Text("Create new tag")
+                Text("tags.createNew".localized)
                     .font(AppFont.Body.mediumMedium, color: brandColor.color)
             }
             .fullWidth(.leading)
             .padding(.standard)
         }
         .buttonStyle(.plain)
-        .accessibilityLabel("Create new tag")
+        .accessibilityLabel("tags.createNew".localized)
     }
 
     func tagSuggestionRow(_ tag: TagModelDomain) -> some View {
@@ -123,7 +123,7 @@ private extension AddObjectStep3View {
             Button(role: .destructive) {
                 store.send(.tagDeleted(tag.id))
             } label: {
-                Label("Delete", systemImage: "trash")
+                Label("common.delete".localized, systemImage: "trash")
             }
         }
     }

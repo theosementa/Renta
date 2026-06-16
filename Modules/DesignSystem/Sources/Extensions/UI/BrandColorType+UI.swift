@@ -17,6 +17,10 @@ public extension BrandColorType {
         case .pink:   Color(hex: 0xFF2D55)
         }
     }
+
+    var localizedName: String {
+        "color.\(rawValue)".localized
+    }
 }
 
 public extension EnvironmentValues {

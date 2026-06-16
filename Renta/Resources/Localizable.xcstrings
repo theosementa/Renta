@@ -1,25 +1,1061 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Objects" : {
+    "accessibility.changeEmoji" : {
+      "extractionState" : "stale",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change emoji"
+          }
+        },
         "fr" : {
-          "stringUnit" : { "state" : "translated", "value" : "Objets" }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Changer l'emoji"
+          }
         }
       }
     },
-    "Dashboard" : {
+    "accessibility.clearSearch" : {
+      "extractionState" : "stale",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear search"
+          }
+        },
         "fr" : {
-          "stringUnit" : { "state" : "translated", "value" : "Tableau de bord" }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Effacer la recherche"
+          }
         }
       }
     },
-    "Settings" : {
+    "accessibility.searchField" : {
+      "extractionState" : "stale",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search field"
+          }
+        },
         "fr" : {
-          "stringUnit" : { "state" : "translated", "value" : "Réglages" }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Champ de recherche"
+          }
         }
+      }
+    },
+    "addObject.ownedFor" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Owned for"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Possédé depuis"
+          }
+        }
+      }
+    },
+    "addObject.purchaseDate" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase date"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date d'achat"
+          }
+        }
+      }
+    },
+    "addObject.purchasePrice" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purchase price"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prix d'achat"
+          }
+        }
+      }
+    },
+    "addObject.step1.question" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What did you buy?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qu'as-tu acheté ?"
+          }
+        }
+      }
+    },
+    "addObject.step2.question" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How long should a typical object in this category take to feel well amortized?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En combien de temps un objet de cette catégorie devrait-il être bien amorti ?"
+          }
+        }
+      }
+    },
+    "addObject.step3.question" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add tags"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter des tags"
+          }
+        }
+      }
+    },
+    "addObject.step4.question" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Looks good?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ça te convient ?"
+          }
+        }
+      }
+    },
+    "color.blue" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blue"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bleu"
+          }
+        }
+      }
+    },
+    "color.green" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Green"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vert"
+          }
+        }
+      }
+    },
+    "color.orange" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orange"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orange"
+          }
+        }
+      }
+    },
+    "color.pink" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pink"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rose"
+          }
+        }
+      }
+    },
+    "color.purple" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purple"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Violet"
+          }
+        }
+      }
+    },
+    "color.red" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rouge"
+          }
+        }
+      }
+    },
+    "common.back" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retour"
+          }
+        }
+      }
+    },
+    "common.cancel" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        }
+      }
+    },
+    "common.close" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
+        }
+      }
+    },
+    "common.delete" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer"
+          }
+        }
+      }
+    },
+    "common.error" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An error occurred"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur est survenue"
+          }
+        }
+      }
+    },
+    "common.next" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suivant"
+          }
+        }
+      }
+    },
+    "common.noName" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No name"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sans nom"
+          }
+        }
+      }
+    },
+    "common.perDay" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "per day"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "par jour"
+          }
+        }
+      }
+    },
+    "common.perMonth" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "per month"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "par mois"
+          }
+        }
+      }
+    },
+    "common.perYear" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "per year"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "par an"
+          }
+        }
+      }
+    },
+    "common.save" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enregistrer"
+          }
+        }
+      }
+    },
+    "common.search" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechercher"
+          }
+        }
+      }
+    },
+    "duration.fiveToSevenYears" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 to 7 years"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 à 7 ans"
+          }
+        }
+      }
+    },
+    "duration.fiveToSevenYears.subtitle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Long-term investment — ex. furniture, professional tools"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Investissement à long terme — ex. mobilier, outils professionnels"
+          }
+        }
+      }
+    },
+    "duration.lessThan6Months" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Less than 6 months"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moins de 6 mois"
+          }
+        }
+      }
+    },
+    "duration.lessThan6Months.subtitle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seasonal items, accessories — ex. sunglasses, gardening tools"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Articles saisonniers, accessoires — ex. lunettes de soleil, outils de jardinage"
+          }
+        }
+      }
+    },
+    "duration.oneToThreeYears" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 to 3 years"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 à 3 ans"
+          }
+        }
+      }
+    },
+    "duration.oneToThreeYears.subtitle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard durable goods — ex. laptop, camera, bike"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biens durables standard — ex. ordinateur portable, appareil photo, vélo"
+          }
+        }
+      }
+    },
+    "duration.sevenYearsOrMore" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7 years or more"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7 ans ou plus"
+          }
+        }
+      }
+    },
+    "duration.sevenYearsOrMore.subtitle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Very long lifespan — ex. vehicle, real estate equipment"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Très longue durée de vie — ex. véhicule, équipement immobilier"
+          }
+        }
+      }
+    },
+    "duration.sixMonthsTo1Year" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6 months to 1 year"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6 mois à 1 an"
+          }
+        }
+      }
+    },
+    "duration.sixMonthsTo1Year.subtitle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everyday items with regular use — ex. shoes, small appliances"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Articles du quotidien à usage régulier — ex. chaussures, petits électroménagers"
+          }
+        }
+      }
+    },
+    "duration.threeToFiveYears" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 to 5 years"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 à 5 ans"
+          }
+        }
+      }
+    },
+    "duration.threeToFiveYears.subtitle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quality equipment built to last — ex. high-end audio, e-bike"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Équipement de qualité conçu pour durer — ex. audio haut de gamme, vélo électrique"
+          }
+        }
+      }
+    },
+    "objects.list.addButton" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add object"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un objet"
+          }
+        }
+      }
+    },
+    "objects.list.empty" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No objects yet"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun objet pour l'instant"
+          }
+        }
+      }
+    },
+    "objects.list.perDay" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/day"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/jour"
+          }
+        }
+      }
+    },
+    "objects.list.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Objects"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mes objets"
+          }
+        }
+      }
+    },
+    "settings.appearance" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apparence"
+          }
+        }
+      }
+    },
+    "settings.brandColor" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brand Color"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couleur principale"
+          }
+        }
+      }
+    },
+    "settings.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réglages"
+          }
+        }
+      }
+    },
+    "tab.dashboard" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dashboard"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tableau de bord"
+          }
+        }
+      }
+    },
+    "tab.objects" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objects"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objets"
+          }
+        }
+      }
+    },
+    "tab.settings" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Réglages"
+          }
+        }
+      }
+    },
+    "tags.create" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create tag"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un tag"
+          }
+        }
+      }
+    },
+    "tags.create.nameLabel" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tag name"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom du tag"
+          }
+        }
+      }
+    },
+    "tags.createNew" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create new tag"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un nouveau tag"
+          }
+        }
+      }
+    },
+    "tags.placeholder" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal, Work, Gift…"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personnel, Travail, Cadeau…"
+          }
+        }
+      }
+    },
+    "tags.remove" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retirer %@"
+          }
+        }
+      }
+    },
+    "tags.selected" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionnés"
+          }
+        }
+      }
+    },
+    "addObject.step1.nameLabel" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Name and emoji" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Nom et emoji" } }
+      }
+    },
+    "addObject.step1.daysAgo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%d days ago" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Il y a %d jours" } }
+      }
+    },
+    "addObject.step1.yearsAgo" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%d years ago • %d days" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Il y a %d ans • %d jours" } }
+      }
+    },
+    "item.owned.today" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Today" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Aujourd'hui" } }
+      }
+    },
+    "item.owned.oneDay" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "1 day" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "1 jour" } }
+      }
+    },
+    "item.owned.days" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%d days" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "%d jours" } }
+      }
+    },
+    "item.owned.oneMonth" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "1 month" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "1 mois" } }
+      }
+    },
+    "item.owned.months" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%d months" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "%d mois" } }
+      }
+    },
+    "item.owned.oneYear" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "1 year" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "1 an" } }
+      }
+    },
+    "item.owned.years" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%d years" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "%d ans" } }
+      }
+    },
+    "item.owned.combined" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%@ and %@" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "%@ et %@" } }
+      }
+    },
+    "item.hint.fullyAmortized" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fully amortized 🎉" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Complètement amorti 🎉" } }
+      }
+    },
+    "item.hint.targetIn" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Target in %@" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Objectif dans %@" } }
+      }
+    },
+    "item.hint.excellentIn" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Excellent in %@" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Excellent dans %@" } }
+      }
+    },
+    "item.hint.correctIn" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Correct in %@" } },
+        "fr" : { "stringUnit" : { "state" : "translated", "value" : "Correct dans %@" } }
       }
     }
   },
