@@ -21,8 +21,13 @@ public final class SwiftDataContextManager: ObservableObject {
 
     private init() {
         do {
-            let config = ModelConfiguration(cloudKitDatabase: .private("iCloud.com.sementa.renta"))
-            container = try ModelContainer(for: ItemEntity.self, TagEntity.self, UserSettingsEntity.self, configurations: config)
+            let schema = Schema(versionedSchema: SchemaV1.self)
+            let config = ModelConfiguration(schema: schema, cloudKitDatabase: .private("iCloud.com.sementa.renta"))
+            container = try ModelContainer(
+                for: schema,
+                migrationPlan: RentaMigrationPlan.self,
+                configurations: config
+            )
             context = container.mainContext
         } catch {
             fatalError("Échec de l'initialisation du ModelContainer: \(error.localizedDescription)")
