@@ -77,23 +77,23 @@ private extension AddObjectStep2View {
 private extension DurationTargetType {
     var title: String {
         switch self {
-        case .lessThan6Months:  return "Less than 6 months"
-        case .sixMonthsTo1Year: return "6 months to 1 year"
-        case .oneToThreeYears:  return "1 to 3 years"
-        case .threeToFiveYears: return "3 to 5 years"
-        case .fiveToSevenYears: return "5 to 7 years"
-        case .sevenYearsOrMore: return "7 years or more"
+        case .lessThan6Months:  return String(localized: "Less than 6 months", bundle: .module)
+        case .sixMonthsTo1Year: return String(localized: "6 months to 1 year", bundle: .module)
+        case .oneToThreeYears:  return String(localized: "1 to 3 years", bundle: .module)
+        case .threeToFiveYears: return String(localized: "3 to 5 years", bundle: .module)
+        case .fiveToSevenYears: return String(localized: "5 to 7 years", bundle: .module)
+        case .sevenYearsOrMore: return String(localized: "7 years or more", bundle: .module)
         }
     }
 
     var subtitle: String {
         switch self {
-        case .lessThan6Months:  return "Seasonal items, accessories — ex. sunglasses, gardening tools"
-        case .sixMonthsTo1Year: return "Everyday items with regular use — ex. shoes, small appliances"
-        case .oneToThreeYears:  return "Standard durable goods — ex. laptop, camera, bike"
-        case .threeToFiveYears: return "Quality equipment built to last — ex. high-end audio, e-bike"
-        case .fiveToSevenYears: return "Long-term investment — ex. furniture, professional tools"
-        case .sevenYearsOrMore: return "Very long lifespan — ex. vehicle, real estate equipment"
+        case .lessThan6Months:  return String(localized: "Seasonal items, accessories — ex. sunglasses, gardening tools", bundle: .module)
+        case .sixMonthsTo1Year: return String(localized: "Everyday items with regular use — ex. shoes, small appliances", bundle: .module)
+        case .oneToThreeYears:  return String(localized: "Standard durable goods — ex. laptop, camera, bike", bundle: .module)
+        case .threeToFiveYears: return String(localized: "Quality equipment built to last — ex. high-end audio, e-bike", bundle: .module)
+        case .fiveToSevenYears: return String(localized: "Long-term investment — ex. furniture, professional tools", bundle: .module)
+        case .sevenYearsOrMore: return String(localized: "Very long lifespan — ex. vehicle, real estate equipment", bundle: .module)
         }
     }
 }

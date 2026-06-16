@@ -1,14 +1,26 @@
 {
-  "sourceLanguage" : "fr",
+  "sourceLanguage" : "en",
   "strings" : {
-    "Dashboard" : {
-
-    },
     "Objects" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : { "state" : "translated", "value" : "Objets" }
+        }
+      }
+    },
+    "Dashboard" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : { "state" : "translated", "value" : "Tableau de bord" }
+        }
+      }
     },
     "Settings" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : { "state" : "translated", "value" : "Réglages" }
+        }
+      }
     }
   },
   "version" : "1.0"

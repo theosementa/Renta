@@ -46,7 +46,7 @@ private extension AddObjectStep4View {
                 .background(store.state.scoreBand.color.opacity(0.15), in: .rect(cornerRadius: .small))
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(store.state.name.isEmpty ? "No name" : store.state.name)
+                Text(store.state.name.isEmpty ? String(localized: "No name", bundle: .module) : store.state.name)
                     .font(AppFont.Body.largeMedium, color: .Text.primary)
 
                 if !store.state.tagsDisplay.isEmpty {
@@ -61,11 +61,11 @@ private extension AddObjectStep4View {
 
     var detailRows: some View {
         VStack(spacing: .standard) {
-            detailRow(label: "Purchase price", value: store.state.purchasePrice.asCurrency)
+            detailRow(label: String(localized: "Purchase price", bundle: .module), value: store.state.purchasePrice.asCurrency)
             Divider()
-            detailRow(label: "Purchase date", value: store.state.purchaseDate.formatted(date: .abbreviated, time: .omitted))
+            detailRow(label: String(localized: "Purchase date", bundle: .module), value: store.state.purchaseDate.formatted(date: .abbreviated, time: .omitted))
             Divider()
-            detailRow(label: "Owned for", value: store.state.ownedForDisplay)
+            detailRow(label: String(localized: "Owned for", bundle: .module), value: store.state.ownedForDisplay)
         }
     }
 
@@ -84,13 +84,13 @@ private extension AddObjectStep4View {
         if store.state.hasCostPreview {
             HStack(spacing: .large) {
                 if store.state.showCostPerDay {
-                    costColumn(value: store.state.costPerDay.asCurrency, label: "per day")
+                    costColumn(value: store.state.costPerDay.asCurrency, label: String(localized: "per day", bundle: .module))
                 }
                 if store.state.showCostPerMonth {
-                    costColumn(value: store.state.costPerMonth.asCurrency, label: "per month")
+                    costColumn(value: store.state.costPerMonth.asCurrency, label: String(localized: "per month", bundle: .module))
                 }
                 if store.state.showCostPerYear {
-                    costColumn(value: store.state.costPerYear.asCurrency, label: "per year")
+                    costColumn(value: store.state.costPerYear.asCurrency, label: String(localized: "per year", bundle: .module))
                 }
                 Spacer()
             }

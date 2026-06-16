@@ -27,7 +27,7 @@ public struct AddObjectScreen: View {
             scrollableContent
 
             AppPrimaryButtonView(
-                title: store.state.step == .confirmation ? "Add object" : "Next",
+                title: store.state.step == .confirmation ? String(localized: "Add object", bundle: .module) : String(localized: "Next", bundle: .module),
                 isLoading: store.state.isLoading
             ) {
                 if store.state.step == .confirmation {
@@ -67,7 +67,7 @@ private extension AddObjectScreen {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 
-    var stepTitle: String {
+    var stepTitle: LocalizedStringKey {
         switch store.state.step {
         case .nameEmoji:    return "What did you buy?"
         case .details:      return "How long should a typical object in this category take to feel well amortized?"
