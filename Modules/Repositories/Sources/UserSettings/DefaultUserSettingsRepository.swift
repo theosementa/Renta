@@ -30,6 +30,7 @@ public extension DefaultUserSettingsRepository {
         entity.monthlyNetSalary = domain.monthlyNetSalary
         entity.weeklyHours = domain.weeklyHours
         entity.hasCompletedOnboarding = domain.hasCompletedOnboarding
+        entity.brandColor = domain.brandColor.rawValue
         try context.save()
     }
 

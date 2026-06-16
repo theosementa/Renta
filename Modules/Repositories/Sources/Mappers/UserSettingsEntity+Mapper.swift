@@ -11,7 +11,8 @@ extension UserSettingsEntity {
         UserSettingsDomain(
             monthlyNetSalary: monthlyNetSalary,
             weeklyHours: weeklyHours,
-            hasCompletedOnboarding: hasCompletedOnboarding
+            hasCompletedOnboarding: hasCompletedOnboarding,
+            brandColor: BrandColorType(rawValue: brandColor) ?? .green
         )
     }
 }

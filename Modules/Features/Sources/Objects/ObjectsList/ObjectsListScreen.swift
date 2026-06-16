@@ -11,6 +11,7 @@ import Navigation
 
 public struct ObjectsListScreen: View {
 
+    @Environment(\.brandColor) private var brandColor
     @State private var viewModel = ObjectsListScreen.ViewModel()
 
     // MARK: - Body
@@ -27,7 +28,7 @@ public struct ObjectsListScreen: View {
                     Button("Done", systemImage: "plus", role: .confirm) {
                         viewModel.navigateToAddObject()
                     }
-                    .tint(Color.Brand.main)
+                    .tint(brandColor.color)
                     .accessibilityLabel("Add object")
                 }
             } else {
@@ -36,7 +37,7 @@ public struct ObjectsListScreen: View {
                         IconView(.iconPlus, color: .white)
                             .padding(.small)
                     }
-                    .background(Color.Brand.main, in: .circle)
+                    .background(brandColor.color, in: .circle)
                     .accessibilityLabel("Add object")
                 }
             }

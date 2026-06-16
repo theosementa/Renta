@@ -7,6 +7,8 @@ import SwiftUI
 
 public struct AppProgressBarView: View {
 
+    @Environment(\.brandColor) private var brandColor
+
     let totalSteps: Int
     let currentStep: Int
 
@@ -20,7 +22,7 @@ public struct AppProgressBarView: View {
         HStack(spacing: .small) {
             ForEach(0..<totalSteps, id: \.self) { index in
                 Capsule()
-                    .fill(index == currentStep ? Color.Brand.main : Color.Background.quaternary)
+                    .fill(index == currentStep ? brandColor.color : Color.Background.quaternary)
                     .frame(height: 4)
                     .animation(.easeInOut(duration: 0.2), value: currentStep)
             }

@@ -7,6 +7,8 @@ import SwiftUI
 
 public struct AppPrimaryButtonView: View {
 
+    @Environment(\.brandColor) private var brandColor
+
     let title: String
     let isLoading: Bool
     let action: () -> Void
@@ -31,7 +33,7 @@ public struct AppPrimaryButtonView: View {
                 }
             }
             .frame(maxWidth: .infinity, minHeight: 55)
-            .background(Color.Brand.main, in: .rect(cornerRadius: 14))
+            .background(brandColor.color, in: .rect(cornerRadius: 14))
         }
         .buttonStyle(.plain)
         .disabled(isLoading)

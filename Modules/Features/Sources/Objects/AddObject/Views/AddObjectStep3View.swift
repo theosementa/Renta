@@ -10,6 +10,7 @@ import Models
 struct AddObjectStep3View: View {
 
     @Bindable var store: DefaultAddObjectStore
+    @Environment(\.brandColor) private var brandColor
 
     @State private var showCreateTag = false
 
@@ -61,18 +62,18 @@ private extension AddObjectStep3View {
     func tagChip(_ tag: TagModelDomain) -> some View {
         HStack(spacing: .tiny) {
             Text(tag.name)
-                .font(AppFont.Body.mediumMedium, color: .Brand.main)
+                .font(AppFont.Body.mediumMedium, color: brandColor.color)
             Button {
                 store.send(.tagRemoved(tag.id))
             } label: {
-                IconView(.iconXmark, size: 16, color: .Brand.main)
+                IconView(.iconXmark, size: 16, color: brandColor.color)
             }
             .buttonStyle(.plain)
             .accessibilityLabel("Remove \(tag.name)")
         }
         .padding(.horizontal, .medium)
         .padding(.vertical, .small)
-        .background(Color.Brand.main.opacity(0.15), in: .capsule)
+        .background(brandColor.color.opacity(0.15), in: .capsule)
     }
 
     var tagListCard: some View {
@@ -96,9 +97,9 @@ private extension AddObjectStep3View {
             showCreateTag = true
         } label: {
             HStack(spacing: .small) {
-                IconView(.iconPlus, size: .large, color: .Brand.main)
+                IconView(.iconPlus, size: .large, color: brandColor.color)
                 Text("Create new tag")
-                    .font(AppFont.Body.mediumMedium, color: .Brand.main)
+                    .font(AppFont.Body.mediumMedium, color: brandColor.color)
             }
             .fullWidth(.leading)
             .padding(.standard)

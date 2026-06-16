@@ -5,7 +5,8 @@ let package = Package(
     name: "Features",
     platforms: [.iOS(.v17)],
     products: [
-        .library(name: "Objects", targets: ["Objects"])
+        .library(name: "Objects", targets: ["Objects"]),
+        .library(name: "Settings", targets: ["Settings"])
     ],
     dependencies: [
         .package(path: "../DataSources"),
@@ -23,6 +24,15 @@ let package = Package(
                 "DesignSystem",
                 "Navigation",
                 "MCEmojiPicker"
+            ]
+        ),
+        .target(
+            name: "Settings",
+            dependencies: [
+                "DataSources",
+                "Models",
+                "DesignSystem",
+                "Navigation"
             ]
         )
     ],

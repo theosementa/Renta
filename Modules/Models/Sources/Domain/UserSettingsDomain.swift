@@ -4,15 +4,18 @@ public struct UserSettingsDomain: Sendable {
     public let monthlyNetSalary: Double?
     public let weeklyHours: Double?
     public let hasCompletedOnboarding: Bool
+    public let brandColor: BrandColorType
 
     public init(
         monthlyNetSalary: Double? = nil,
         weeklyHours: Double? = nil,
-        hasCompletedOnboarding: Bool = false
+        hasCompletedOnboarding: Bool = false,
+        brandColor: BrandColorType = .green
     ) {
         self.monthlyNetSalary = monthlyNetSalary
         self.weeklyHours = weeklyHours
         self.hasCompletedOnboarding = hasCompletedOnboarding
+        self.brandColor = brandColor
     }
 }
 

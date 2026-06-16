@@ -10,7 +10,11 @@ import SwiftData
 import PharosNav
 import Persistence
 import Navigation
+import DataSources
 import Objects
+import Settings
+import Models
+import DesignSystem
 
 @main
 struct RentaApp: App {
@@ -18,6 +22,7 @@ struct RentaApp: App {
     init() {
         NavigationRegistry.shared.registerAllDestinations()
         NavigationRegistry.shared.registerObjectRoutes()
+        NavigationRegistry.shared.registerSettingsRoutes()
     }
 
     var body: some Scene {
@@ -31,6 +36,7 @@ struct RentaApp: App {
 struct ContentView: View {
 
     @State private var routerManager = AppRouterManager.shared
+    @State private var userSettingsDataSource = UserSettingsDataSource.shared
 
     var body: some View {
         NavigationTabView(
@@ -54,11 +60,13 @@ struct ContentView: View {
                 NavigationTabItem {
                     Label("Settings", systemImage: "gear")
                 } content: {
-                    EmptyView()
+                    SettingsScreen()
                 }
             case .onboarding:
                 nil
             }
         }
+        .tint(userSettingsDataSource.settings.brandColor.color)
+        .environment(\.brandColor, userSettingsDataSource.settings.brandColor)
     }
 }

@@ -10,6 +10,7 @@ import Models
 struct AddObjectStep2View: View {
 
     @Bindable var store: DefaultAddObjectStore
+    @Environment(\.brandColor) private var brandColor
 
     // MARK: - Body
     var body: some View {
@@ -33,7 +34,7 @@ private extension AddObjectStep2View {
                 Group {
                     if isSelected {
                         Circle()
-                            .fill(Color.Brand.main)
+                            .fill(brandColor.color)
                             .overlay {
                                 Circle()
                                     .fill(Color.white)
@@ -57,13 +58,13 @@ private extension AddObjectStep2View {
             }
             .padding(.standard)
             .background(
-                isSelected ? Color.Brand.main.opacity(0.15) : Color.Background.secondary,
+                isSelected ? brandColor.color.opacity(0.15) : Color.Background.secondary,
                 in: .rect(cornerRadius: .mediumLarge)
             )
             .overlay {
                 if isSelected {
                     RoundedRectangle(cornerRadius: .mediumLarge)
-                        .stroke(Color.Brand.main, lineWidth: 2)
+                        .stroke(brandColor.color, lineWidth: 2)
                 }
             }
         }

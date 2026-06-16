@@ -12,6 +12,7 @@ public final class UserSettingsEntity {
     public var weeklyHours: Double? = nil
     public var hasCompletedOnboarding: Bool = false
     public var hasPurchasedPro: Bool = false
+    public var brandColor: String = BrandColorType.green.rawValue
 
     public init() {}
 }
