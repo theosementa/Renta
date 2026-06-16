@@ -57,9 +57,6 @@ struct AddObjectReducer {
             newState.tagSuggestions.removeAll { $0.id == id }
             newState.selectedTags.removeAll { $0.id == id }
 
-        case .excludeFromGlobalChanged(let value):
-            newState.excludeFromGlobal = value
-
         }
 
         return newState

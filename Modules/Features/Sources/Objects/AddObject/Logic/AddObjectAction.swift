@@ -16,7 +16,6 @@ enum AddObjectAction {
         purchasePrice: Double,
         purchaseDate: Date,
         durationTarget: DurationTargetType,
-        tags: [TagModelDomain],
-        excludeFromGlobal: Bool
+        tags: [TagModelDomain]
     )
 }

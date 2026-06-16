@@ -18,7 +18,6 @@ public struct AddObjectState: Sendable {
     public var tagQuery: String = ""
     public var tagSuggestions: [TagModelDomain] = []
     public var selectedTags: [TagModelDomain] = []
-    public var excludeFromGlobal: Bool = false
 
     public init() {}
 }
@@ -47,5 +46,27 @@ public extension AddObjectState {
     var progress: Double {
         Double(step.rawValue + 1) / Double(AddObjectStep.allCases.count)
     }
+
+    var tagsDisplay: String {
+        selectedTags.map(\.name).joined(separator: ", ")
+    }
+
+    var daysSinceOwned: Int {
+        max(1, Calendar.current.dateComponents([.day], from: purchaseDate, to: .now).day ?? 1)
+    }
+
+    var ownedForDisplay: String {
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: purchaseDate, to: .now)
+        let years = components.year ?? 0
+        let months = components.month ?? 0
+        let days = components.day ?? 0
+        if years > 0 { return years == 1 ? "1 year" : "\(years) years" }
+        if months > 0 { return months == 1 ? "1 month" : "\(months) months" }
+        return days <= 1 ? "Today" : "\(days) days"
+    }
+
+    var costPerDay: Double { purchasePrice / Double(daysSinceOwned) }
+    var costPerMonth: Double { costPerDay * 30.44 }
+    var costPerYear: Double { costPerDay * 365.25 }
 
 }
