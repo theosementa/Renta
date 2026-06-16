@@ -43,7 +43,7 @@ private extension AddObjectStep4View {
             Text(store.state.emoji)
                 .font(.system(size: 20))
                 .padding(.small)
-                .background(Color.Brand.main.opacity(0.15), in: .rect(cornerRadius: .small))
+                .background(store.state.scoreBand.color.opacity(0.15), in: .rect(cornerRadius: .small))
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(store.state.name.isEmpty ? "No name" : store.state.name)
@@ -79,24 +79,32 @@ private extension AddObjectStep4View {
         }
     }
 
+    @ViewBuilder
     var costPreviewCard: some View {
-        HStack {
-            costColumn(value: store.state.costPerDay.asCurrency, label: "per day")
-            Spacer()
-            costColumn(value: store.state.costPerMonth.asCurrency, label: "per month")
-            Spacer()
-            costColumn(value: store.state.costPerYear.asCurrency, label: "per year")
+        if store.state.hasCostPreview {
+            HStack(spacing: .standard) {
+                if store.state.showCostPerDay {
+                    costColumn(value: store.state.costPerDay.asCurrency, label: "per day")
+                }
+                if store.state.showCostPerMonth {
+                    costColumn(value: store.state.costPerMonth.asCurrency, label: "per month")
+                }
+                if store.state.showCostPerYear {
+                    costColumn(value: store.state.costPerYear.asCurrency, label: "per year")
+                }
+                Spacer()
+            }
+            .padding(.standard)
+            .background(store.state.scoreBand.color.opacity(0.15), in: .rect(cornerRadius: .mediumLarge))
         }
-        .padding(.standard)
-        .background(Color.Brand.main.opacity(0.15), in: .rect(cornerRadius: .mediumLarge))
     }
 
     func costColumn(value: String, label: String) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(value)
-                .font(AppFont.Title.largeSemiBold, color: .Brand.main)
+                .font(AppFont.Title.largeSemiBold, color: store.state.scoreBand.color)
             Text(label)
-                .font(AppFont.Label.largeMedium, color: .Brand.main)
+                .font(AppFont.Label.largeMedium, color: store.state.scoreBand.color)
         }
     }
 }

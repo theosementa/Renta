@@ -1,7 +1,15 @@
 {
   "sourceLanguage" : "fr",
   "strings" : {
+    "Dashboard" : {
 
+    },
+    "Objects" : {
+
+    },
+    "Settings" : {
+
+    }
   },
   "version" : "1.0"
 }

@@ -8,7 +8,11 @@ import DesignSystem
 import Models
 
 public struct AddObjectScreen: View {
+    
+    // MARK: Environments
+    @Environment(\.dismiss) private var dismiss
 
+    // MARK: States
     @State private var store = DefaultAddObjectStore()
 
     // MARK: - Body
@@ -32,8 +36,7 @@ public struct AddObjectScreen: View {
                     store.send(.nextStep)
                 }
             }
-            .padding(.horizontal, .large)
-            .padding(.bottom, .large)
+            .padding([.horizontal, .bottom], .large)
             .disabled(isActionButtonDisabled)
             .opacity(isActionButtonDisabled ? 0.4 : 1)
             .animation(.easeInOut(duration: 0.15), value: store.state.step)
@@ -110,7 +113,7 @@ private extension AddObjectScreen {
         for await effect in store.sideEffects {
             switch effect {
             case .dismiss:
-                break
+                dismiss()
             case .showProUpgrade:
                 break
             case .objectAdded:

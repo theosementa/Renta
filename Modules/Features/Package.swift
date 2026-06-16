@@ -11,12 +11,19 @@ let package = Package(
         .package(path: "../DataSources"),
         .package(path: "../Models"),
         .package(path: "../DesignSystem"),
+        .package(path: "../Navigation"),
         .package(url: "https://github.com/izyumkin/MCEmojiPicker", from: "1.0.0")
     ],
     targets: [
         .target(
             name: "Objects",
-            dependencies: ["DataSources", "Models", "DesignSystem", "MCEmojiPicker"]
+            dependencies: [
+                "DataSources",
+                "Models",
+                "DesignSystem",
+                "Navigation",
+                "MCEmojiPicker"
+            ]
         )
     ],
     swiftLanguageModes: [.v6]

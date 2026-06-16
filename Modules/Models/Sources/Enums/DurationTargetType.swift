@@ -11,11 +11,11 @@ public enum DurationTargetType: String, CaseIterable, Codable, Sendable {
     public var targetDays: Int {
         switch self {
         case .lessThan6Months:  return 91
-        case .sixMonthsTo1Year: return 274
-        case .oneToThreeYears:  return 730
-        case .threeToFiveYears: return 1461
-        case .fiveToSevenYears: return 2192
-        case .sevenYearsOrMore: return 3287
+        case .sixMonthsTo1Year: return 182
+        case .oneToThreeYears:  return 365
+        case .threeToFiveYears: return 1095
+        case .fiveToSevenYears: return 1825
+        case .sevenYearsOrMore: return 2555
         }
     }
 
@@ -34,7 +34,7 @@ public enum DurationTargetType: String, CaseIterable, Codable, Sendable {
         } else if d < te {
             raw = 33 + ((d - tc) / (te - tc)) * 34
         } else {
-            raw = 67 + min((d - te) / td * 33, 33)
+            raw = 67 + min((d - te) / (td - te) * 33, 33)
         }
         return min(max(Int(raw), 0), 100)
     }

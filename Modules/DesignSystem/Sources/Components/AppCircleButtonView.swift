@@ -8,10 +8,16 @@ import SwiftUI
 public struct AppCircleButtonView: View {
 
     let systemImage: String
+    let hasLiquidGlass: Bool
     let action: () -> Void
 
-    public init(systemImage: String, action: @escaping () -> Void) {
+    public init(
+        systemImage: String,
+        hasLiquidGlass: Bool = true,
+        action: @escaping () -> Void = { }
+    ) {
         self.systemImage = systemImage
+        self.hasLiquidGlass = hasLiquidGlass
         self.action = action
     }
 
@@ -19,14 +25,16 @@ public struct AppCircleButtonView: View {
     public var body: some View {
         Button(action: action) {
             Image(systemName: systemImage)
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 20, weight: .medium))
                 .foregroundStyle(Color.Text.primary)
-                .frame(width: 44, height: 44)
+                .padding(.medium)
                 .background {
                     if #available(iOS 26, *) {
-                        Circle()
-                            .fill(.clear)
-                            .glassEffect(.regular.interactive())
+                        if hasLiquidGlass {
+                            Circle()
+                                .fill(.clear)
+                                .glassEffect(.regular.interactive())
+                        }
                     } else {
                         Circle()
                             .fill(Color.Background.secondary)

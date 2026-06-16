@@ -30,27 +30,32 @@ private extension AddObjectStep2View {
             store.send(.durationTargetChanged(option))
         } label: {
             HStack(spacing: .medium) {
-                ZStack {
+                Group {
                     if isSelected {
-                        Circle().fill(Color.Brand.main)
-                        Circle().fill(Color.white).frame(width: 8, height: 8)
+                        Circle()
+                            .fill(Color.Brand.main)
+                            .overlay {
+                                Circle()
+                                    .fill(Color.white)
+                                    .frame(width: 8, height: 8)
+                            }
                     } else {
-                        Circle().stroke(Color.Text.secondary, lineWidth: 1.5)
+                        Circle()
+                            .fill(Color.Background.tertiary)
                     }
                 }
                 .frame(width: 20, height: 20)
 
-                VStack(alignment: .leading, spacing: 0) {
+                VStack(alignment: .leading, spacing: .zero) {
                     Text(option.title)
                         .font(.Body.mediumMedium, color: .Text.primary)
                     Text(option.subtitle)
                         .font(.Body.smallRegular, color: .Text.secondary)
+                        .multilineTextAlignment(.leading)
                 }
-
-                Spacer()
+                .fullWidth(.leading)
             }
             .padding(.standard)
-            .frame(maxWidth: .infinity)
             .background(
                 isSelected ? Color.Brand.main.opacity(0.15) : Color.Background.secondary,
                 in: .rect(cornerRadius: .mediumLarge)
@@ -62,8 +67,7 @@ private extension AddObjectStep2View {
                 }
             }
         }
-        .buttonStyle(.plain)
-        .animation(.easeInOut(duration: 0.15), value: store.state.durationTarget)
+        .animation(.smooth, value: store.state.durationTarget)
         .accessibilityLabel(option.title)
     }
 }
