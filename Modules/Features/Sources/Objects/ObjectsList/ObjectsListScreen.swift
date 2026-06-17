@@ -3,11 +3,11 @@
 //
 //  Created by Theo Sementa on 16/06/2026.
 
-import SwiftUI
+import DataSources
 import DesignSystem
 import Models
-import DataSources
 import Navigation
+import SwiftUI
 
 public struct ObjectsListScreen: View {
 
@@ -51,10 +51,10 @@ public struct ObjectsListScreen: View {
 }
 
 // MARK: - Subviews
-private extension ObjectsListScreen {
+extension ObjectsListScreen {
 
     @ViewBuilder
-    var content: some View {
+    fileprivate var content: some View {
         switch viewModel.state {
         case .loading:
             ProgressView()

@@ -16,3 +16,4 @@ DerivedData/
 # IDE
 .DS_Store
 *.xcuserstate
+**/xcuserdata/
