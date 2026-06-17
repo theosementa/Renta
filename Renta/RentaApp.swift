@@ -6,9 +6,7 @@
 //
 
 import SwiftUI
-import SwiftData
 import PharosNav
-import Persistence
 import Navigation
 import DataSources
 import Objects
@@ -29,7 +27,6 @@ struct RentaApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(SwiftDataContextManager.shared.container)
     }
 }
 
