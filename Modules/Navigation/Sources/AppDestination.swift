@@ -8,7 +8,7 @@
 import PharosNav
 
 @RecursiveDestination
-public enum AppDestination: @MainActor AppDestinationProtocol {
+public nonisolated enum AppDestination: @MainActor AppDestinationProtocol {
     case home(HomeDestination)
     case object(ObjectDestination)
     case dashboard(DashboardDestination)

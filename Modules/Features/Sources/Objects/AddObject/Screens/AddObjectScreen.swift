@@ -41,6 +41,7 @@ public struct AddObjectScreen: View {
             .opacity(isActionButtonDisabled ? 0.4 : 1)
             .animation(.easeInOut(duration: 0.15), value: store.state.step)
         }
+        .ignoresSafeArea(.keyboard)
         .background(Color.Background.primary)
         .task { await observeSideEffects() }
     }
@@ -57,14 +58,15 @@ private extension AddObjectScreen {
             VStack(spacing: .huge) {
                 Text(stepTitle)
                     .font(.Title.mediumMedium, color: .Text.primary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .fullWidth(.leading)
 
                 stepContent
             }
             .padding(.large)
         }
         .scrollIndicators(.hidden)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .scrollDismissesKeyboard(.immediately)
+        .fullSize()
     }
 
     var stepTitle: String {
