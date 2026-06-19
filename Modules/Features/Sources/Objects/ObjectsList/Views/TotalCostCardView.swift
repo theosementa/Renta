@@ -5,6 +5,7 @@
 
 import SwiftUI
 import DesignSystem
+import Logic
 import Models
 
 public struct TotalCostCardView: View {
@@ -35,7 +36,7 @@ private extension TotalCostCardView {
             Text("home.totalCostCard.label".localized)
                 .font(AppFont.Body.mediumRegular, color: .white.opacity(0.6))
 
-            HStack(alignment: .bottom, spacing: 10) {
+            HStack(alignment: .bottom, spacing: .small) {
                 Text(totalCostPerDay.asCurrency)
                     .font(AppFont.Display.extraLargeSemiBold, color: .white)
 
@@ -44,7 +45,7 @@ private extension TotalCostCardView {
                     .padding(.bottom, 6)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .fullWidth(.leading)
     }
 
     var divider: some View {
@@ -69,7 +70,7 @@ private extension TotalCostCardView {
             Text(label)
                 .font(AppFont.Body.smallRegular, color: .white.opacity(0.6))
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .fullWidth(.leading)
     }
 
 }
@@ -82,19 +83,19 @@ private extension TotalCostCardView {
     }
 
     var totalCostPerDay: Double {
-        activeItems.reduce(0) { $0 + $1.costPerDay }
+        PortfolioCalculator.totalCostPerDay(items: activeItems)
     }
 
     var totalCostThisMonth: Double {
-        activeItems.reduce(0) { $0 + $1.costThisMonth }
+        PortfolioCalculator.totalCostThisMonth(items: activeItems)
     }
 
     var totalCostThisYear: Double {
-        activeItems.reduce(0) { $0 + $1.costThisYear }
+        PortfolioCalculator.totalCostThisYear(items: activeItems)
     }
 
     var totalValue: Double {
-        activeItems.reduce(0) { $0 + $1.purchasePrice }
+        PortfolioCalculator.totalPurchaseValue(items: activeItems)
     }
 
 }
