@@ -45,7 +45,7 @@ struct ContentView: View {
                 NavigationTabItem {
                     Label("tab.objects".localized, systemImage: "bag")
                 } content: {
-                    ObjectsListScreen()
+                    HomeScreen()
                 }
             case .dashboard:
                 NavigationTabItem {

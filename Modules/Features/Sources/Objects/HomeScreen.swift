@@ -1,34 +1,42 @@
-//  ObjectsListScreen.swift
+//  HomeScreen.swift
 //  Renta
 //
-//  Created by Theo Sementa on 16/06/2026.
+//  Created by Theo Sementa on 18/06/2026.
 
+import SwiftUI
 import DataSources
 import DesignSystem
 import Models
 import Navigation
-import SwiftUI
 
-public struct ObjectsListScreen: View {
+public struct HomeScreen: View {
 
     @Environment(\.brandColor) private var brandColor
-    @State private var viewModel = ObjectsListScreen.ViewModel()
+    @State private var viewModel = HomeScreen.ViewModel()
 
     // MARK: - Body
     public var body: some View {
-        ScrollView {
-            content
+        ScrollView(.vertical) {
+            LazyVStack(spacing: .huge) {
+                TotalCostCardView(items: viewModel.items)
+                    .padding(.horizontal, .large)
+                PortfolioOverviewView(items: viewModel.items)
+                    .padding(.horizontal, .large)
+
+                if !viewModel.almostThereItems.isEmpty {
+                    AlmostThereView(items: viewModel.items)
+                }
+
+                allObjectsRow
+                    .padding(.horizontal, .large)
+            }
+            .padding(.vertical, .large)
         }
         .scrollIndicators(.hidden)
         .navigationTitle("objects.list.title".localized)
         .navigationBarTitleDisplayMode(.large)
-        .navigationBarBackButtonHidden(true)
+        .background(Color.Background.primary)
         .toolbar {
-            ToolbarItem(placement: .topBarLeading) {
-                NavigationDismissButton {
-                    IconView(.iconArrowLeft)
-                }
-            }
             if #available(iOS 26, *) {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done", systemImage: "plus", role: .confirm) {
@@ -48,7 +56,6 @@ public struct ObjectsListScreen: View {
                 }
             }
         }
-        .background(Color.Background.primary)
         .task { await viewModel.loadItems() }
     }
 
@@ -57,42 +64,32 @@ public struct ObjectsListScreen: View {
 }
 
 // MARK: - Subviews
-extension ObjectsListScreen {
+extension HomeScreen {
 
-    @ViewBuilder
-    fileprivate var content: some View {
-        switch viewModel.state {
-        case .loading:
-            ProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .padding(.top, .huge)
-
-        case .empty:
-            Text("objects.list.empty".localized)
-                .font(AppFont.Body.mediumMedium, color: .Text.secondary)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.top, .huge)
-
-        case .success(let items):
-            LazyVStack(spacing: .standard) {
-                ForEach(items) { item in
-                    ObjectCardView(item: item, onDelete: { viewModel.deleteItem(id: item.id) })
+    fileprivate var allObjectsRow: some View {
+        AppNavigationButton(target: .push(.object(.list))) {
+            HStack {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("home.allObjects.title".localized)
+                        .font(AppFont.Body.largeMedium, color: .Text.primary)
+                    
+                    Text(String(format: "home.allObjects.count".localized, viewModel.items.count))
+                        .font(AppFont.Body.smallRegular, color: .Text.secondary)
                 }
+                
+                Spacer()
+                
+                IconView(.iconArrowRight)
             }
             .padding(.standard)
-
-        case .error:
-            Text("common.error".localized)
-                .font(AppFont.Body.mediumMedium, color: .Text.secondary)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.top, .huge)
+            .background(Color.Background.secondary, in: .rect(cornerRadius: .mediumLarge))
         }
     }
 
 }
 
 // MARK: - ViewModel
-extension ObjectsListScreen {
+extension HomeScreen {
 
     @Observable @MainActor
     final class ViewModel {
@@ -100,10 +97,10 @@ extension ObjectsListScreen {
         private(set) var loadError: AppError? = nil
         private let dataSource: ItemDataSource
 
-        var state: ScreenState<[ItemModelDomain]> {
-            if isInitialLoading { return .loading }
-            if let error = loadError { return .error(error) }
-            return dataSource.items.isEmpty ? .empty : .success(dataSource.items)
+        var items: [ItemModelDomain] { dataSource.items }
+
+        var almostThereItems: [ItemModelDomain] {
+            items.filter { $0.nextScoreBand != nil }
         }
 
         init(dataSource: ItemDataSource = ItemDataSource.shared) {
@@ -114,16 +111,10 @@ extension ObjectsListScreen {
 }
 
 // MARK: - Public methods
-extension ObjectsListScreen.ViewModel: Routable {
+extension HomeScreen.ViewModel: Routable {
 
     func navigateToAddObject() {
         router?.present(route: .fullScreenCover, .object(.create))
-    }
-
-    func deleteItem(id: UUID) {
-        Task {
-            try? await dataSource.delete(id: id)
-        }
     }
 
     func loadItems() async {
@@ -144,16 +135,16 @@ extension ObjectsListScreen.ViewModel: Routable {
 }
 
 // MARK: - Preview
-#Preview("ObjectsListScreen — Light") {
+#Preview("HomeScreen — Light") {
     NavigationStack {
-        ObjectsListScreen()
+        HomeScreen()
     }
     .preferredColorScheme(.light)
 }
 
-#Preview("ObjectsListScreen — Dark") {
+#Preview("HomeScreen — Dark") {
     NavigationStack {
-        ObjectsListScreen()
+        HomeScreen()
     }
     .preferredColorScheme(.dark)
 }
