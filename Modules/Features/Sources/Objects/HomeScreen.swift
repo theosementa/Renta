@@ -19,15 +19,18 @@ public struct HomeScreen: View {
         ScrollView(.vertical) {
             LazyVStack(spacing: .huge) {
                 TotalCostCardView(items: viewModel.items)
+                    .padding(.horizontal, .large)
                 PortfolioOverviewView(items: viewModel.items)
+                    .padding(.horizontal, .large)
 
                 if !viewModel.almostThereItems.isEmpty {
                     AlmostThereView(items: viewModel.items)
                 }
 
                 allObjectsRow
+                    .padding(.horizontal, .large)
             }
-            .padding(.standard)
+            .padding(.vertical, .large)
         }
         .scrollIndicators(.hidden)
         .navigationTitle("objects.list.title".localized)

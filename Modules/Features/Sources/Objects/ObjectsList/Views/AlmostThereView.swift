@@ -19,6 +19,7 @@ public struct AlmostThereView: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: .medium) {
             header
+                .padding(.horizontal, .large)
 
             ScrollView(.horizontal) {
                 HStack(spacing: .standard) {
@@ -28,6 +29,7 @@ public struct AlmostThereView: View {
                 }
             }
             .scrollIndicators(.hidden)
+            .contentMargins(.horizontal, .large, for: .scrollContent)
         }
     }
 
