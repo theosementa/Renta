@@ -64,27 +64,23 @@ public struct HomeScreen: View {
 extension HomeScreen {
 
     fileprivate var allObjectsRow: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 0) {
-                Text("home.allObjects.title".localized)
-                    .font(AppFont.Body.largeMedium, color: .Text.primary)
-
-                Text(String(format: "home.allObjects.count".localized, viewModel.items.count))
-                    .font(AppFont.Body.smallRegular, color: .Text.secondary)
+        AppNavigationButton(target: .push(.object(.list))) {
+            HStack {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("home.allObjects.title".localized)
+                        .font(AppFont.Body.largeMedium, color: .Text.primary)
+                    
+                    Text(String(format: "home.allObjects.count".localized, viewModel.items.count))
+                        .font(AppFont.Body.smallRegular, color: .Text.secondary)
+                }
+                
+                Spacer()
+                
+                IconView(.iconArrowRight)
             }
-
-            Spacer()
-
-            AppNavigationButton(target: .push(.object(.list))) {
-                Image(systemName: "chevron.right")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundStyle(Color.Text.primary)
-                    .padding(.small)
-                    .background(Color.Background.quaternary, in: .circle)
-            }
+            .padding(.standard)
+            .background(Color.Background.secondary, in: .rect(cornerRadius: .mediumLarge))
         }
-        .padding(.standard)
-        .background(Color.Background.secondary, in: .rect(cornerRadius: .mediumLarge))
     }
 
 }

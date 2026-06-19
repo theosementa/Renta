@@ -22,7 +22,13 @@ public struct ObjectsListScreen: View {
         .scrollIndicators(.hidden)
         .navigationTitle("objects.list.title".localized)
         .navigationBarTitleDisplayMode(.large)
+        .navigationBarBackButtonHidden(true)
         .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                NavigationDismissButton {
+                    IconView(.iconArrowLeft)
+                }
+            }
             if #available(iOS 26, *) {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done", systemImage: "plus", role: .confirm) {
