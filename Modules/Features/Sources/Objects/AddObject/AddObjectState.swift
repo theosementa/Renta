@@ -4,6 +4,7 @@
 //  Created by Theo Sementa on 15/06/2026.
 
 import Foundation
+import Logic
 import Models
 
 @MainActor
@@ -55,12 +56,22 @@ public extension AddObjectState {
         max(1, Calendar.current.dateComponents([.day], from: purchaseDate, to: .now).day ?? 1)
     }
 
-    var costPerDay: Double { purchasePrice / Double(daysSinceOwned) }
-    var costPerMonth: Double { costPerDay * 30.44 }
-    var costPerYear: Double { costPerDay * 365.25 }
+    var costPerDay: Double {
+        AmortisationCalculator.costPerDay(purchasePrice: purchasePrice, daysOwned: daysSinceOwned)
+    }
+    var costPerMonth: Double {
+        AmortisationCalculator.costPerMonth(purchasePrice: purchasePrice, daysOwned: daysSinceOwned)
+    }
+    var costPerYear: Double {
+        AmortisationCalculator.costPerYear(purchasePrice: purchasePrice, daysOwned: daysSinceOwned)
+    }
 
-    var scoreValue: Int { durationTarget.scoreValue(daysOwned: daysSinceOwned) }
-    var scoreBand: ScoreBandType { ScoreBandType(scoreValue: scoreValue) }
+    var scoreValue: Int {
+        ScoreCalculator.scoreValue(daysOwned: daysSinceOwned, durationTarget: durationTarget)
+    }
+    var scoreBand: ScoreBandType {
+        ScoreBandType(scoreValue: scoreValue)
+    }
 
     var showCostPerDay: Bool { purchasePrice > costPerDay }
     var showCostPerMonth: Bool { purchasePrice > costPerMonth }

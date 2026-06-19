@@ -21,21 +21,4 @@ public enum DurationTargetType: String, CaseIterable, Codable, Sendable {
 
     public var thresholdCorrect: Int  { Int(Double(targetDays) * 0.333) }
     public var thresholdExcellent: Int { Int(Double(targetDays) * 0.666) }
-
-    public func scoreValue(daysOwned: Int) -> Int {
-        guard daysOwned >= 8 else { return 0 }
-        let d = Double(daysOwned)
-        let tc = Double(thresholdCorrect)
-        let te = Double(thresholdExcellent)
-        let td = Double(targetDays)
-        let raw: Double
-        if d < tc {
-            raw = (d / tc) * 33
-        } else if d < te {
-            raw = 33 + ((d - tc) / (te - tc)) * 34
-        } else {
-            raw = 67 + min((d - te) / (td - te) * 33, 33)
-        }
-        return min(max(Int(raw), 0), 100)
-    }
 }

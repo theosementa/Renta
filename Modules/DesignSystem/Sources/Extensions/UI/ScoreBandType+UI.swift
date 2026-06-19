@@ -9,4 +9,12 @@ public extension ScoreBandType {
         case .excellent: return Color.Status.excellent
         }
     }
+
+    var label: String {
+        switch self {
+        case .high:      return "common.scoreBand.high".localized
+        case .correct:   return "common.scoreBand.correct".localized
+        case .excellent: return "common.scoreBand.excellent".localized
+        }
+    }
 }

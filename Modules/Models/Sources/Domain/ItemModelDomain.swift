@@ -42,27 +42,3 @@ public struct ItemModelDomain: Identifiable, Equatable, Sendable {
         self.createdAt = createdAt
     }
 }
-
-// MARK: - Computed variables
-extension ItemModelDomain {
-    public var daysOwned: Int {
-        Calendar.current.dateComponents([.day], from: purchaseDate, to: .now).day ?? 0
-    }
-
-    public var costPerDay: Double {
-        daysOwned > 0 ? purchasePrice / Double(daysOwned) : purchasePrice
-    }
-
-    public var costPerMonth: Double { costPerDay * 30.44 }
-    public var costPerYear: Double { costPerDay * 365 }
-    public var totalAmortized: Double { costPerDay * Double(daysOwned) }
-
-    public var scoreValue: Int { durationTarget.scoreValue(daysOwned: daysOwned) }
-    public var scoreBand: ScoreBandType { ScoreBandType(scoreValue: scoreValue) }
-    public var isScoreVisible: Bool { daysOwned >= 8 }
-
-    public var netCost: Double? { salePrice.map { purchasePrice - $0 } }
-    public var netCostPerDay: Double? { netCost.map { $0 / max(Double(daysOwned), 1) } }
-    public var recoveryRate: Double? { salePrice.map { ($0 / purchasePrice) * 100 } }
-
-}

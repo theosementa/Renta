@@ -13,6 +13,7 @@ let package = Package(
         .package(path: "../Models"),
         .package(path: "../DesignSystem"),
         .package(path: "../Navigation"),
+        .package(path: "../Logic"),
         .package(url: "https://github.com/izyumkin/MCEmojiPicker", from: "1.0.0")
     ],
     targets: [
@@ -23,6 +24,7 @@ let package = Package(
                 "Models",
                 "DesignSystem",
                 "Navigation",
+                "Logic",
                 "MCEmojiPicker"
             ]
         ),
@@ -32,7 +34,8 @@ let package = Package(
                 "DataSources",
                 "Models",
                 "DesignSystem",
-                "Navigation"
+                "Navigation",
+                "Logic"
             ]
         )
     ],

@@ -4,22 +4,25 @@
 import PackageDescription
 
 let package = Package(
-    name: "DesignSystem",
+    name: "Logic",
     platforms: [.iOS(.v17)],
     products: [
         .library(
-            name: "DesignSystem",
-            targets: ["DesignSystem"]
+            name: "Logic",
+            targets: ["Logic"]
         )
     ],
     dependencies: [
-        .package(path: "../Models"),
-        .package(path: "../Logic")
+        .package(path: "../Models")
     ],
     targets: [
         .target(
-            name: "DesignSystem",
-            dependencies: ["Models", "Logic"]
+            name: "Logic",
+            dependencies: ["Models"]
+        ),
+        .testTarget(
+            name: "LogicTests",
+            dependencies: ["Logic", "Models"]
         )
     ],
     swiftLanguageModes: [.v6]
