@@ -38,6 +38,8 @@ private extension PortfolioOverviewView {
         VStack(alignment: .leading, spacing: 0) {
             Text("\(count(for: band))")
                 .font(AppFont.Display.largeBold, color: band.color)
+                .contentTransition(.numericText())
+                .animation(.smooth.delay(0.5), value: items.count)
 
             Text(band.label)
                 .font(AppFont.Body.largeMedium, color: band.color)
