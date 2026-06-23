@@ -4,7 +4,6 @@
 //  Created by Theo Sementa on 18/06/2026.
 
 import SwiftUI
-import DataSources
 import DesignSystem
 import Models
 import Navigation
@@ -12,19 +11,19 @@ import Navigation
 public struct HomeScreen: View {
 
     @Environment(\.brandColor) private var brandColor
-    @State private var viewModel = HomeScreen.ViewModel()
+    @State private var logic = HomeScreen.Logic()
 
     // MARK: - Body
     public var body: some View {
         ScrollView(.vertical) {
             LazyVStack(spacing: .huge) {
-                TotalCostCardView(items: viewModel.items)
+                TotalCostCardView(items: logic.items)
                     .padding(.horizontal, .large)
-                PortfolioOverviewView(items: viewModel.items)
+                PortfolioOverviewView(items: logic.items)
                     .padding(.horizontal, .large)
 
-                if !viewModel.almostThereItems.isEmpty {
-                    AlmostThereView(items: viewModel.items)
+                if !logic.almostThereItems.isEmpty {
+                    AlmostThereView(items: logic.items)
                 }
 
                 allObjectsRow
@@ -40,7 +39,7 @@ public struct HomeScreen: View {
             if #available(iOS 26, *) {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done", systemImage: "plus", role: .confirm) {
-                        viewModel.navigateToAddObject()
+                        logic.navigateToAddObject()
                     }
                     .tint(brandColor.color)
                     .accessibilityLabel("objects.list.addButton".localized)
@@ -56,7 +55,7 @@ public struct HomeScreen: View {
                 }
             }
         }
-        .task { await viewModel.loadItems() }
+        .task { await logic.loadItems() }
     }
 
     public init() {}
@@ -72,8 +71,8 @@ extension HomeScreen {
                 VStack(alignment: .leading, spacing: 0) {
                     Text("home.allObjects.title".localized)
                         .font(AppFont.Body.largeMedium, color: .Text.primary)
-                    
-                    Text(String(format: "home.allObjects.count".localized, viewModel.items.count))
+
+                    Text(String(format: "home.allObjects.count".localized, logic.items.count))
                         .font(AppFont.Body.smallRegular, color: .Text.secondary)
                 }
                 
@@ -83,52 +82,6 @@ extension HomeScreen {
             }
             .padding(.standard)
             .background(Color.Background.secondary, in: .rect(cornerRadius: .mediumLarge))
-        }
-    }
-
-}
-
-// MARK: - ViewModel
-extension HomeScreen {
-
-    @Observable @MainActor
-    final class ViewModel {
-        private(set) var isInitialLoading: Bool = true
-        private(set) var loadError: AppError? = nil
-        private let dataSource: ItemDataSource
-
-        var items: [ItemModelDomain] { dataSource.items }
-
-        var almostThereItems: [ItemModelDomain] {
-            items.filter { $0.nextScoreBand != nil }
-        }
-
-        init(dataSource: ItemDataSource = ItemDataSource.shared) {
-            self.dataSource = dataSource
-        }
-    }
-
-}
-
-// MARK: - Public methods
-extension HomeScreen.ViewModel: Routable {
-
-    func navigateToAddObject() {
-        router?.present(route: .fullScreenCover, .object(.create))
-    }
-
-    func loadItems() async {
-        isInitialLoading = true
-        loadError = nil
-        do {
-            try await dataSource.fetchItems()
-            isInitialLoading = false
-        } catch let error as AppError {
-            loadError = error
-            isInitialLoading = false
-        } catch {
-            loadError = .unknown(error.localizedDescription)
-            isInitialLoading = false
         }
     }
 

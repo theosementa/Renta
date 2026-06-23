@@ -6,11 +6,10 @@
 import SwiftUI
 import Models
 import DesignSystem
-import DataSources
 
 public struct SettingsScreen: View {
 
-    @State private var viewModel = SettingsScreen.ViewModel()
+    @State private var logic = SettingsScreen.Logic()
 
     public init() {}
 
@@ -19,8 +18,8 @@ public struct SettingsScreen: View {
         Form {
             Section("settings.appearance".localized) {
                 Picker("settings.brandColor".localized, selection: .init(
-                    get: { viewModel.brandColor },
-                    set: { viewModel.updateBrandColor($0) }
+                    get: { logic.brandColor },
+                    set: { logic.updateBrandColor($0) }
                 )) {
                     ForEach(BrandColorType.allCases, id: \.self) { color in
                         Label {
@@ -37,33 +36,6 @@ public struct SettingsScreen: View {
         }
         .navigationTitle("settings.title".localized)
         .navigationBarTitleDisplayMode(.large)
-    }
-
-}
-
-// MARK: - ViewModel
-extension SettingsScreen {
-
-    @Observable @MainActor
-    final class ViewModel {
-        private let dataSource: UserSettingsDataSource
-
-        var brandColor: BrandColorType {
-            dataSource.settings.brandColor
-        }
-
-        init(dataSource: UserSettingsDataSource = .shared) {
-            self.dataSource = dataSource
-        }
-    }
-
-}
-
-// MARK: - Public methods
-extension SettingsScreen.ViewModel {
-
-    func updateBrandColor(_ color: BrandColorType) {
-        try? dataSource.updateBrandColor(color)
     }
 
 }

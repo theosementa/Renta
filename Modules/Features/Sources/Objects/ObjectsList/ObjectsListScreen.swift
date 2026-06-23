@@ -3,7 +3,6 @@
 //
 //  Created by Theo Sementa on 16/06/2026.
 
-import DataSources
 import DesignSystem
 import Models
 import Navigation
@@ -12,14 +11,27 @@ import SwiftUI
 public struct ObjectsListScreen: View {
 
     @Environment(\.brandColor) private var brandColor
-    @State private var viewModel = ObjectsListScreen.ViewModel()
+    @State private var logic = ObjectsListScreen.Logic()
 
     // MARK: - Body
     public var body: some View {
         ScrollView {
-            content
+            LazyVStack(spacing: .standard) {
+                AppSearchBarView(text: .init(
+                    get: { logic.searchText },
+                    set: { logic.searchTextChanged($0) }
+                ))
+                TagSelectorView(
+                    selectedBand: logic.selectedBand,
+                    brandColor: brandColor.color,
+                    onSelect: { logic.bandSelected($0) }
+                )
+                cardsContent
+            }
+            .padding(.standard)
         }
         .scrollIndicators(.hidden)
+        .scrollDismissesKeyboard(.immediately)
         .navigationTitle("objects.list.title".localized)
         .navigationBarTitleDisplayMode(.large)
         .navigationBarBackButtonHidden(true)
@@ -32,7 +44,7 @@ public struct ObjectsListScreen: View {
             if #available(iOS 26, *) {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done", systemImage: "plus", role: .confirm) {
-                        viewModel.navigateToAddObject()
+                        logic.navigateToAddObject()
                     }
                     .tint(brandColor.color)
                     .accessibilityLabel("objects.list.addButton".localized)
@@ -49,7 +61,7 @@ public struct ObjectsListScreen: View {
             }
         }
         .background(Color.Background.primary)
-        .task { await viewModel.loadItems() }
+        .task { await logic.loadItems() }
     }
 
     public init() {}
@@ -60,8 +72,8 @@ public struct ObjectsListScreen: View {
 extension ObjectsListScreen {
 
     @ViewBuilder
-    fileprivate var content: some View {
-        switch viewModel.state {
+    fileprivate var cardsContent: some View {
+        switch logic.state {
         case .loading:
             ProgressView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -76,68 +88,15 @@ extension ObjectsListScreen {
         case .success(let items):
             LazyVStack(spacing: .standard) {
                 ForEach(items) { item in
-                    ObjectCardView(item: item, onDelete: { viewModel.deleteItem(id: item.id) })
+                    ObjectCardView(item: item, onDelete: { logic.deleteItem(id: item.id) })
                 }
             }
-            .padding(.standard)
 
         case .error:
             Text("common.error".localized)
                 .font(AppFont.Body.mediumMedium, color: .Text.secondary)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.top, .huge)
-        }
-    }
-
-}
-
-// MARK: - ViewModel
-extension ObjectsListScreen {
-
-    @Observable @MainActor
-    final class ViewModel {
-        private(set) var isInitialLoading: Bool = true
-        private(set) var loadError: AppError? = nil
-        private let dataSource: ItemDataSource
-
-        var state: ScreenState<[ItemModelDomain]> {
-            if isInitialLoading { return .loading }
-            if let error = loadError { return .error(error) }
-            return dataSource.items.isEmpty ? .empty : .success(dataSource.items)
-        }
-
-        init(dataSource: ItemDataSource = ItemDataSource.shared) {
-            self.dataSource = dataSource
-        }
-    }
-
-}
-
-// MARK: - Public methods
-extension ObjectsListScreen.ViewModel: Routable {
-
-    func navigateToAddObject() {
-        router?.present(route: .fullScreenCover, .object(.create))
-    }
-
-    func deleteItem(id: UUID) {
-        Task {
-            try? await dataSource.delete(id: id)
-        }
-    }
-
-    func loadItems() async {
-        isInitialLoading = true
-        loadError = nil
-        do {
-            try await dataSource.fetchItems()
-            isInitialLoading = false
-        } catch let error as AppError {
-            loadError = error
-            isInitialLoading = false
-        } catch {
-            loadError = .unknown(error.localizedDescription)
-            isInitialLoading = false
         }
     }
 

@@ -953,6 +953,23 @@
         }
       }
     },
+    "objects.list.filter.all" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tous"
+          }
+        }
+      }
+    },
     "objects.list.perDay" : {
       "extractionState" : "stale",
       "localizations" : {

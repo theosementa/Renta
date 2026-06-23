@@ -1,6 +1,6 @@
 import Foundation
 
-public enum ScoreBandType: Sendable {
+public enum ScoreBandType: Sendable, CaseIterable {
     case high       // 0–33
     case correct    // 34–66
     case excellent  // 67–100
@@ -11,5 +11,9 @@ public enum ScoreBandType: Sendable {
         case 34..<67: self = .correct
         default:      self = .excellent
         }
+    }
+    
+    public static var allCasesOrdered: [ScoreBandType] {
+        return [.excellent, .correct, .high]
     }
 }
